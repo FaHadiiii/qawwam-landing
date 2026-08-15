@@ -1,63 +1,43 @@
-# Qawwam Landing Page
+<div align="center">
 
-Marketing landing page for the **Qawwam** Islamic app, built as preparation for store release. Mirrors the app's design system (AlbertSans, brand blue `#2965E4`, rounded cards, dark/light themes).
+# Qawwam
 
-## Stack
+### Every prayer. Every dua. In one app.
 
-- Vite + React 19 + TypeScript
-- Tailwind CSS v4 (CSS-first config in `src/index.css`)
-- React Router (SPA routes) + react-markdown (disclosure docs)
-- Deploys to **Cloudflare Pages**
+A complete Islamic companion for daily worship — prayer times, the Qur'an with tajweed and
+audio, duas, tasbih, qiblat compass and personal trackers, thoughtfully designed and
+available offline in English, Malay and Arabic.
 
-## Commands
+</div>
 
-```bash
-npm install        # install dependencies
-npm run dev        # local dev server
-npm run build      # type-check + production build → dist/
-npm run lint       # oxlint
-npm run preview    # preview the production build
-npm run deploy     # build + deploy to Cloudflare Pages (project: qawwam-landing)
-```
+<br />
 
-## Routes
+![Qawwam](./public/feature.png)
 
-| Route | Page |
-| --- | --- |
-| `/` | Landing (Hero, Features, Quran, Demos, Stats, Reviews, FAQ, Download) |
-| `/terms` | Terms of Use |
-| `/privacy` | Privacy Policy |
-| `/acknowledgement` | Acknowledgement |
+<br />
 
-## Disclosure content
+## Everything you need to stay connected
 
-The Terms of Use, Privacy Policy and Acknowledgement markdown in `src/content/` are **copied** from
-`qawwam-api/src/services/disclosure.service.ts` (the app's backend, which serves them to the app at
-`/v1/disclosures/{slug}`).
+| | | |
+| :---: | :---: | :---: |
+| 🕋 **Qur'an** — read the mushaf with tajweed colouring, translations, transliteration and audio recitation | 🕌 **Prayer Times** — accurate Waktu Solat from official authorities (JAKIM, Kemenag, MUIS, KHEU) with a time-aware progress arc | 🤲 **Duas** — a categorised library of supplications with Arabic, translation and transliteration |
+| 📿 **Tasbih** — digital counter with curated adhkar, vibration feedback and per-dhikr targets | 🧭 **Qiblat** — smooth compass that points to the Kaabah from anywhere | 🗓️ **Islamic Events** — key dates with Hijri and Gregorian dates for the year ahead |
+| 💖 **Prayer & Fasting Trackers** — log your daily worship, track streaks and review consistency | 📊 **Analytics** — beautiful charts of your Qur'an reading, prayer and fasting habits | 🌙 **Asma-ul-Husna** — explore the 99 Beautiful Names of Allah |
+| 🩸 **Menstrual Tracker** — log haid and istihadah days with cycle predictions and smart reminders | 🌍 **3 Languages** — fully localised in English, Bahasa Malaysia and Arabic | ✨ **More to come** |
 
-They are embedded statically (not fetched) because that endpoint requires a Bearer token and the
-landing page has no server-side component.
+<br />
 
-**Keep in sync:** if the disclosure text changes in `qawwam-api`, re-copy the markdown into
-`src/content/` and update the version/date in the page components.
+## Available soon
 
-## Store links
+- **iOS & Android** — the app is coming to the App Store and Google Play. Stay tuned.
+- Visit the **landing page** at [qawwam-landing.pages.dev](https://qawwam-landing.pages.dev/).
 
-`src/data/site.ts` contains placeholder App Store / Google Play URLs — replace them with the real
-URLs before release.
+<br />
 
-## Brand assets
+<div align="center">
 
-Copied from the Flutter app:
+Made with ❤️ for the ummah
 
-- `public/icons/app-icon.png` · `logo.png` · `logo-white.png` · `kaabah.png`
-- `public/fonts/` — AlbertSans (weights 100–900)
+© 2026 Qawwam
 
-## Deployment
-
-```bash
-npm run deploy
-```
-
-Cloudflare Pages serves `dist/`; `public/_redirects` provides the SPA fallback so client-side
-routes (`/terms`, `/privacy`, …) work on refresh.
+</div>
