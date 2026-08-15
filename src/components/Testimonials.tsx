@@ -4,21 +4,21 @@ const TESTIMONIALS = [
     role: 'Kuala Lumpur, MY',
     quote:
       'The prayer arc on the home screen is genius — I always know exactly how much time is left for the next salah at a glance.',
-    initials: 'AR',
+    avatar: 'https://i.pravatar.cc/80?img=47',
   },
   {
     name: 'Muhammad F.',
     role: 'Singapore, SG',
     quote:
       'Beautiful Qur\'an with tajweed colours and audio recitation. The voice search actually finds the ayah I\'m thinking of.',
-    initials: 'MF',
+    avatar: 'https://i.pravatar.cc/80?img=68',
   },
   {
     name: 'Nurul H.',
     role: 'Jakarta, ID',
     quote:
       'I use the tasbih and daily duas every single day. Having everything — prayers, Qur\'an, duas — in one clean app is a blessing.',
-    initials: 'NH',
+    avatar: 'https://i.pravatar.cc/80?img=45',
   },
 ]
 
@@ -52,9 +52,12 @@ export function Testimonials() {
                 “{t.quote}”
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5 dark:border-dark-border">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                  {t.initials}
-                </span>
+                <img
+                  src={t.avatar}
+                  alt={`${t.name} avatar`}
+                  loading="lazy"
+                  className="h-10 w-10 rounded-full object-cover ring-2 ring-primary/20"
+                />
                 <div>
                   <p className="text-sm font-bold">{t.name}</p>
                   <p className="text-xs text-ink-mute dark:text-dark-ink-mute">{t.role}</p>
