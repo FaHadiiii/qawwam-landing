@@ -30,7 +30,7 @@ available offline in English, Malay and Arabic.
 ## Available soon
 
 - **iOS & Android** — the app is coming to the App Store and Google Play. Stay tuned.
-- Visit the **landing page** at [qawwam-landing.pages.dev](https://qawwam-landing.pages.dev/).
+- Visit the **landing page** at [qawwam.fahadi.my](https://qawwam.fahadi.my/).
 
 <br />
 
