@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* AlbertSans — the Qawwam app font (weights 100–900) */
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@theme {
+  --font-sans: "AlbertSans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* Brand palette — mirrored from apps_theme.dart */
+  --color-primary: #2965e4;
+  --color-primary-soft: #eaf1fe;
+  --color-navy: #20335f;
+  --color-surface: #ffffff;
+  --color-secondary: #ebecf0;
+  --color-border: #f5f5f5;
+  --color-ink: #242424;
+  --color-ink-soft: #646464;
+  --color-ink-mute: #b4b4b4;
+  --color-gold: #f0c030;
+
+  /* Dark tokens */
+  --color-dark-surface: #141414;
+  --color-dark-bg: #0f0f0f;
+  --color-dark-secondary: #151515;
+  --color-dark-border: #121212;
+  --color-dark-ink: #e0e0e0;
+  --color-dark-ink-soft: #c4c4c4;
+  --color-dark-ink-mute: #9c9c9c;
+
+  --radius-card: 22px;
+  --radius-pill: 100px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.dark body {
+  background: var(--color-dark-bg);
+  color: var(--color-dark-ink);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Custom scrollbar — subtle, matches the app's soft chrome */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-ink-mute) 40%, transparent);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Utility: hide scrollbars for horizontal scroll rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Markdown article typography (disclosure pages) */
+.prose-qawwam h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+.prose-qawwam h2 {
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 2rem 0 0.75rem;
+}
+.prose-qawwam h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 1.5rem 0 0.5rem;
+}
+.prose-qawwam p {
+  margin: 0.75rem 0;
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+}
+.dark .prose-qawwam p {
+  color: var(--color-dark-ink-soft);
+}
+.prose-qawwam a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-qawwam ul,
+.prose-qawwam ol {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  line-height: 1.75;
+  color: var(--color-ink-soft);
+}
+.dark .prose-qawwam ul,
+.dark .prose-qawwam ol {
+  color: var(--color-dark-ink-soft);
+}
+.prose-qawwam li {
+  margin: 0.35rem 0;
+}
+.prose-qawwam strong {
+  color: var(--color-ink);
+  font-weight: 700;
+}
+.dark .prose-qawwam strong {
+  color: var(--color-dark-ink);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
