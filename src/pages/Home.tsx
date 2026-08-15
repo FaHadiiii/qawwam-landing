@@ -1,9 +1,7 @@
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { Features } from '../components/Features'
-import { QuranShowcase } from '../components/QuranShowcase'
-import { Demos } from '../components/Demos'
-import { Stats } from '../components/Stats'
+import { ScreenshotShowcase } from '../components/ScreenshotShowcase'
 import { Testimonials } from '../components/Testimonials'
 import { FAQ } from '../components/FAQ'
 import { DownloadCTA } from '../components/DownloadCTA'
@@ -16,9 +14,7 @@ export function Home() {
       <main className="flex-1">
         <Hero />
         <Features />
-        <QuranShowcase />
-        <Demos />
-        <Stats />
+        <ScreenshotShowcase />
         <Testimonials />
         <FAQ />
         <DownloadCTA />

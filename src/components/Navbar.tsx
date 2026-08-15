@@ -5,10 +5,12 @@ import { Icon } from './Icon'
 
 const NAV_LINKS = [
   { href: '#features', label: 'Features' },
-  { href: '#quran', label: 'Qur\'an' },
+  { href: '#gallery', label: 'Gallery' },
   { href: '#testimonials', label: 'Reviews' },
   { href: '#faq', label: 'FAQ' },
 ]
+
+const EXTERNAL_LINK = { href: 'https://qawwam.userjot.com/', label: 'Feedback' }
 
 export function Navbar() {
   const { theme, toggle } = useTheme()
@@ -31,9 +33,8 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <img src="/icons/app-icon.png" alt="Qawwam" className="h-9 w-9 rounded-[10px]" />
-          <span className="text-lg font-bold tracking-tight">Qawwam</span>
+        <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <img src="/icons/logo.png" alt="Qawwam" className="h-8 w-auto" />
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -46,6 +47,14 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href={EXTERNAL_LINK.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition hover:bg-secondary hover:text-ink dark:text-dark-ink-soft dark:hover:bg-dark-secondary dark:hover:text-dark-ink"
+          >
+            {EXTERNAL_LINK.label}
+          </a>
         </div>
 
         <div className="flex items-center gap-2">
@@ -89,6 +98,15 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={EXTERNAL_LINK.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              className="rounded-xl px-4 py-3 text-sm font-medium text-ink-soft transition hover:bg-secondary hover:text-ink dark:text-dark-ink-soft dark:hover:bg-dark-secondary dark:hover:text-dark-ink"
+            >
+              {EXTERNAL_LINK.label}
+            </a>
             <a
               href="#download"
               onClick={() => setOpen(false)}

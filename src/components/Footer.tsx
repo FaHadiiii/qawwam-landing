@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const FOOTER_LINKS = [
   {
-    heading: 'Product',
+    heading: "Product",
     links: [
-      { label: 'Features', href: '/#features' },
-      { label: 'Qur\'an', href: '/#quran' },
-      { label: 'FAQ', href: '/#faq' },
+      { label: "Features", href: "/#features" },
+      { label: "Gallery", href: "/#gallery" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
-    heading: 'Legal',
+    heading: "Legal",
     links: [
-      { label: 'Terms of Use', href: '/terms' },
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Acknowledgement', href: '/acknowledgement' },
+      { label: "Terms of Use", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Acknowledgement", href: "/acknowledgement" },
     ],
   },
-]
+];
 
 export function Footer() {
   return (
@@ -25,19 +25,22 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <img src="/icons/app-icon.png" alt="Qawwam" className="h-9 w-9 rounded-[10px]" />
-              <span className="text-lg font-bold tracking-tight">Qawwam</span>
+            <div className="flex items-center">
+              <img
+                src="/icons/logo.png"
+                alt="Qawwam"
+                className="h-8 w-auto"
+              />
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-              Every prayer. Every dua. In one app. A complete Islamic companion, thoughtfully
-              designed for daily worship.
+              Every prayer. Every dua. In one app. A complete Islamic companion,
+              thoughtfully designed for daily worship.
             </p>
           </div>
 
           {FOOTER_LINKS.map((col) => (
             <nav key={col.heading} aria-label={col.heading}>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-ink-mute dark:text-dark-ink-mute">
+              <h3 className="text-sm font-bold tracking-widest text-ink-mute dark:text-dark-ink-mute">
                 {col.heading}
               </h3>
               <ul className="mt-4 space-y-3">
@@ -66,5 +69,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
