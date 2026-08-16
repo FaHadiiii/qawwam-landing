@@ -1,5 +1,3 @@
-# Terms of Use
-
 **Effective date:** 2026-08-14 · **Version:** 1.0.0
 
 Welcome to Qawwam ("the App"). By accessing or using the App, you agree to be
@@ -27,6 +25,7 @@ educational use.
 - Google Sign-In is used for authentication; we never receive or store your
   Google password.
 - You may stop using the Service and request deletion of your data at any time.
+  See [Account Deletion](#account-deletion) for instructions.
 
 ## 4. Acceptable Use
 

@@ -1,5 +1,3 @@
-# Privacy Policy
-
 **Effective date:** 2026-08-14 · **Version:** 1.0.0
 
 This Privacy Policy explains how Qawwam ("we", "us") collects, uses, and

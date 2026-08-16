@@ -1,5 +1,3 @@
-# Acknowledgement
-
 **Effective date:** 2026-08-14 · **Version:** 1.0.0
 
 Qawwam draws on the work of numerous institutions and individuals to provide

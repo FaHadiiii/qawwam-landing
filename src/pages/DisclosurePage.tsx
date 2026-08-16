@@ -62,6 +62,8 @@ export function DisclosurePage({
                     return <Link to="/terms">Terms of Use</Link>;
                   if (href.startsWith("#acknowledgement"))
                     return <Link to="/acknowledgement">Acknowledgement</Link>;
+                  if (href.startsWith("#account-deletion"))
+                    return <Link to="/account-deletion">Account Deletion</Link>;
                   if (href.startsWith("#")) return <a href={href} {...props} />;
                   return (
                     <a

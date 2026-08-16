@@ -15,6 +15,7 @@ const FOOTER_LINKS = [
       { label: "Terms of Use", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Acknowledgement", href: "/acknowledgement" },
+      { label: "Account Deletion", href: "/account-deletion" },
     ],
   },
 ];
