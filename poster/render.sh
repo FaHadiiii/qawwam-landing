@@ -9,9 +9,10 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 render() {
   local name="$1"
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
-    --virtual-time-budget=5000 --window-size=1024,500 \
+    --virtual-time-budget=5000 --window-size=1200,630 \
     --screenshot="$DIR/$name.png" "file://$DIR/$name.html" >/dev/null 2>&1
-  echo "rendered $name.png"
+  cp "$DIR/$name.png" "$DIR/../public/$name.png"
+  echo "rendered $name.png and copied to public/"
 }
 
 case "${1:-all}" in
