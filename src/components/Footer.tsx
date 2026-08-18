@@ -10,10 +10,10 @@ const FOOTER_LINKS = [
     ],
   },
   {
-    heading: "Legal",
+    heading: "Disclosures",
     links: [
-      { label: "Terms of Use", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Use", href: "/terms" },
       { label: "Acknowledgement", href: "/acknowledgement" },
       { label: "Account Deletion", href: "/account-deletion" },
     ],
@@ -27,15 +27,12 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="flex items-center">
-              <img
-                src="/icons/logo.png"
-                alt="Qawwam"
-                className="h-8 w-auto"
-              />
+              <img src="/icons/logo.png" alt="Qawwam" className="h-8 w-auto" />
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-              Faith, together. A complete Islamic companion — prayer times, the Qur'an, duas,
-              tasbih and connected worship, thoughtfully designed for daily life.
+              Faith, together. A complete Islamic companion — prayer times, the
+              Qur'an, duas, tasbih and connected worship, thoughtfully designed
+              for daily life.
             </p>
           </div>
 

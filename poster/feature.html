@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  @font-face {
+    font-family: "AlbertSans";
+    src: url("../public/fonts/AlbertSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "AlbertSans";
+    src: url("../public/fonts/AlbertSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: "AlbertSans";
+    src: url("../public/fonts/AlbertSans-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 500px; overflow: hidden; }
+  body {
+    font-family: "AlbertSans", system-ui, -apple-system, sans-serif;
+    background: #ffffff;
+    color: #242424;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    position: relative;
+    width: 1024px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .glow {
+    position: absolute;
+    top: -220px;
+    left: 50%;
+    width: 900px;
+    height: 560px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,101,228,0.16) 0%, rgba(41,101,228,0.05) 55%, rgba(41,101,228,0) 75%);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+  .col-left { position: relative; z-index: 2; padding-left: 64px; max-width: 520px; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid #f5f5f5;
+    background: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    color: #646464;
+  }
+  .badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #2965e4;
+  }
+  h1 {
+    margin-top: 22px;
+    font-size: 40px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  h1 .grad {
+    background: linear-gradient(90deg, #2965e4, #5b8def);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  p.sub {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #646464;
+    max-width: 420px;
+  }
+  .chips {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    color: #525252;
+  }
+  .chip .cdot {
+    width: 6px; height: 6px; border-radius: 50%;
+  }
+  .brand {
+    margin-top: 30px;
+  }
+  .brand img {
+    height: 34px;
+    width: auto;
+  }
+  .col-right { position: relative; z-index: 2; margin-left: auto; padding-right: 110px; }
+  .phone-glow {
+    position: absolute;
+    inset: -28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,101,228,0.28) 0%, rgba(41,101,228,0.1) 50%, rgba(41,101,228,0) 70%);
+    filter: blur(6px);
+  }
+  .phone {
+    position: relative;
+    width: 195px;
+    height: 412px;
+    padding: 8px;
+    border-radius: 38px;
+    background: linear-gradient(145deg,#4a4a4a 0%,#333 15%,#252525 50%,#333 85%,#4a4a4a 100%);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), inset 0 1px rgba(255,255,255,0.25), 0 30px 60px -15px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.4);
+  }
+  .phone .screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 31px;
+    overflow: hidden;
+    background: #000;
+  }
+  .phone .screen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="glow"></div>
+    <div class="col-left">
+      <div class="badge"><span class="dot"></span>Faith, Together.</div>
+      <h1>Every prayer.<br/>Every dua.<br/><span class="grad">Now, together.</span></h1>
+      <p class="sub">Link accounts with family and friends, share worship progress, and keep each other accountable — in one offline Islamic companion.</p>
+      <div class="chips">
+        <span class="chip"><span class="cdot" style="background:#2965e4"></span>Linked Accounts</span>
+        <span class="chip"><span class="cdot" style="background:#10b981"></span>Offline-first</span>
+        <span class="chip"><span class="cdot" style="background:#8b5cf6"></span>Qur'an</span>
+        <span class="chip"><span class="cdot" style="background:#f59e0b"></span>Prayer Times</span>
+        <span class="chip"><span class="cdot" style="background:#f43f5e"></span>Mosque</span>
+        <span class="chip"><span class="cdot" style="background:#0ea5e9"></span>Halal</span>
+        <span class="chip"><span class="cdot" style="background:#242424"></span>+9 more</span>
+      </div>
+      <div class="brand">
+        <img src="../public/icons/logo.png" alt="Qawwam" />
+      </div>
+    </div>
+    <div class="col-right">
+      <div class="phone-glow"></div>
+      <div class="phone">
+        <div class="screen">
+          <img src="../public/screenshot/light/home.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -10,7 +10,7 @@ export function DownloadCTA() {
           className="mx-auto h-12 w-12 rounded-[16px] shadow-xl"
         />
         <h2 className="mx-auto mt-7 max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Faith, together.
+          Faith, Together.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-soft dark:text-dark-ink-soft sm:text-lg">
           Download Qawwam for free and bring prayer times, the Qur'an, duas,

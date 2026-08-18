@@ -51,10 +51,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all ${
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
           scrolled
-            ? 'bg-surface/80 backdrop-blur-xl border-b border-border dark:bg-dark-bg/80 dark:border-dark-border'
-            : 'bg-transparent'
+            ? 'border-border bg-surface/80 backdrop-blur-xl dark:border-dark-border dark:bg-dark-bg/80'
+            : 'border-border/0 bg-transparent dark:border-dark-border/0'
         }`}
       >
         <nav className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-5 py-4">
