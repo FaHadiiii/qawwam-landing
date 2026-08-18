@@ -262,6 +262,17 @@ h4 {
   }
 }
 
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 5 5;
+  animation: dashFlow 1.1s linear infinite;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -301,7 +312,8 @@ h4 {
   .animate-floaty,
   .animate-floaty-slow,
   .animate-glow-pulse,
-  .animate-chip {
+  .animate-chip,
+  .animate-dash {
     animation: none;
     transition: none;
   }

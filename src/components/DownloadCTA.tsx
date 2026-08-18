@@ -1,4 +1,4 @@
-import { StoreBadges } from './StoreBadges'
+import { StoreBadges } from "./StoreBadges";
 
 export function DownloadCTA() {
   return (
@@ -7,13 +7,14 @@ export function DownloadCTA() {
         <img
           src="/icons/app-icon.png"
           alt="Qawwam app icon"
-          className="mx-auto h-14 w-14 rounded-[16px] shadow-xl"
+          className="mx-auto h-12 w-12 rounded-[16px] shadow-xl"
         />
         <h2 className="mx-auto mt-7 max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Start your Qawwam journey today
+          Faith, together.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-soft dark:text-dark-ink-soft sm:text-lg">
-          Download for free and bring prayer times, the Qur'an, duas and tasbih — together —
+          Download Qawwam for free and bring prayer times, the Qur'an, duas,
+          tasbih — and the people who keep you accountable — together,
           everywhere you go.
         </p>
 
@@ -22,5 +23,5 @@ export function DownloadCTA() {
         </div>
       </div>
     </section>
-  )
+  );
 }

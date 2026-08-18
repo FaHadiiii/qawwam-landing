@@ -10,7 +10,7 @@ const TESTIMONIALS = [
     name: 'Muhammad F.',
     role: 'Singapore, SG',
     quote:
-      'Beautiful Qur\'an with tajweed colours and audio recitation. The voice search actually finds the ayah I\'m thinking of.',
+      'Linking with my siblings changed everything. We poke each other when one of us misses a prayer, and sharing our progress keeps us accountable.',
     avatar: 'https://i.pravatar.cc/80?img=68',
   },
   {

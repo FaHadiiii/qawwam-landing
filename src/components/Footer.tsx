@@ -34,8 +34,8 @@ export function Footer() {
               />
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-              Every prayer. Every dua. In one app. A complete Islamic companion,
-              thoughtfully designed for daily worship.
+              Faith, together. A complete Islamic companion — prayer times, the Qur'an, duas,
+              tasbih and connected worship, thoughtfully designed for daily life.
             </p>
           </div>
 

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { MockFrame } from "react-mockframe";
-import "react-mockframe/styles/mockframe-iphones.css";
-import { useTheme } from "../lib/theme-context";
-import { useMouseParallax, useScrollParallax } from "../lib/motion";
+import { DeviceFrame } from "./DeviceFrame";
+import {
+  useIsMobile,
+  useMouseParallax,
+  useScrollParallax,
+} from "../lib/motion";
 
-const DEVICE_W = 375;
-const DEVICE_H = 812;
-const ZOOM_MOBILE = 0.5;
 const MAIN_W = 260;
 
 const CHIPS = [
@@ -30,61 +28,29 @@ const CHIPS = [
   },
 ];
 
-function useIsMobile() {
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const update = () => setMobile(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-  return mobile;
-}
+function FeatureChips({ mobile = false }: { mobile?: boolean }) {
+  const positions: Record<string, string> = mobile
+    ? {
+        Dhuhr: "absolute -right-14 top-10 z-20",
+        Tasbih: "absolute -left-12 top-1/2 z-20",
+        Qiblat: "absolute -right-10 bottom-24 z-20",
+      }
+    : {
+        Dhuhr: "absolute -right-20 top-16 z-20",
+        Tasbih: "absolute -left-15 top-1/2 z-20",
+        Qiblat: "absolute -right-10 bottom-16 z-20",
+      };
 
-function DeviceFrame({
-  name,
-  alt,
-  width,
-}: {
-  name: string;
-  alt: string;
-  width: number;
-}) {
-  const { theme } = useTheme();
-  const zoom = width / DEVICE_W;
-  return (
-    <div style={{ width, height: DEVICE_H * zoom }}>
-      <div style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
-        <MockFrame
-          device="iPhone 17"
-          color="black"
-          hideNotch
-          style={{ width: DEVICE_W, height: DEVICE_H }}
-        >
-          <img
-            src={`/screenshot/${theme}/${name}.png`}
-            alt={alt}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </MockFrame>
-      </div>
-    </div>
-  );
-}
-
-function FeatureChips() {
   return (
     <>
       {CHIPS.map((chip) => (
         <div
           key={chip.label}
           aria-hidden
-          className={`animate-chip absolute ${chip.className}`}
+          className={`animate-chip absolute ${positions[chip.label]}`}
           style={{ animationDelay: chip.delay }}
         >
-          <div className="flex items-center gap-2 rounded-2xl border border-border bg-surface/80 px-3.5 py-2 text-xs font-semibold text-ink shadow-lg shadow-primary/10 backdrop-blur-md dark:border-dark-border dark:bg-dark-surface/80 dark:text-dark-ink">
+          <div className="flex items-center gap-2 rounded-2xl border border-border bg-surface/80 px-3 py-1.5 text-[11px] font-semibold text-ink shadow-lg shadow-primary/10 backdrop-blur-md dark:border-dark-border dark:bg-dark-surface/80 dark:text-dark-ink sm:px-3.5 sm:py-2 sm:text-xs">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             <span className="text-ink-soft dark:text-dark-ink-soft">
               {chip.label}
@@ -114,9 +80,10 @@ export function HeroDevice() {
             <DeviceFrame
               name="home"
               alt="Qawwam home screen with prayer times"
-              width={DEVICE_W * ZOOM_MOBILE}
+              width={187.5}
             />
           </div>
+          <FeatureChips mobile />
         </div>
       </div>
     );

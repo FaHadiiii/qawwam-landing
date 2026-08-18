@@ -1,26 +1,33 @@
-import { PhoneFrame } from './PhoneFrame'
+import { PhoneFrame } from "./PhoneFrame";
 
 const SCREENSHOTS = [
-  { name: 'home', label: 'Home' },
-  { name: 'quran_1', label: 'Qur\'an' },
-  { name: 'quran_2', label: 'Qur\'an reader' },
-  { name: 'qiblat', label: 'Qiblat' },
-  { name: 'tasbih', label: 'Tasbih' },
-  { name: 'analytics', label: 'Analytics' },
-  { name: 'account_link', label: 'Account' },
-  { name: 'account_link_analytic', label: 'Insights' },
-]
+  { name: "home", label: "Home" },
+  { name: "account_link", label: "Linked Accounts" },
+  { name: "account_link_analytic", label: "Shared Insights" },
+  { name: "quran_1", label: "Qur'an" },
+  { name: "quran_2", label: "Qur'an reader" },
+  { name: "qiblat", label: "Qiblat" },
+  { name: "tasbih", label: "Tasbih" },
+  { name: "analytics", label: "Analytics" },
+];
 
 export function ScreenshotShowcase() {
   return (
     <section id="gallery" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            See Qawwam in action
+          <h2 className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <span>See</span>
+            <img
+              src="/icons/logo.png"
+              alt="Qawwam logo"
+              className="h-8 w-auto sm:h-9"
+            />
+            <span>Qawwam in action</span>
           </h2>
           <p className="mt-4 text-base text-ink-soft sm:text-lg dark:text-dark-ink-soft">
-            Thoughtfully designed for daily worship — every screen, right from the app.
+            Thoughtfully designed for daily worship — every screen, right from
+            the app.
           </p>
         </div>
 
@@ -51,5 +58,5 @@ export function ScreenshotShowcase() {
         </div>
       </div>
     </section>
-  )
+  );
 }

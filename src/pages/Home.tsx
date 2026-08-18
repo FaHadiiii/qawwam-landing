@@ -1,5 +1,6 @@
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
+import { ConnectionSection } from '../components/ConnectionSection'
 import { Features } from '../components/Features'
 import { ScreenshotShowcase } from '../components/ScreenshotShowcase'
 import { Testimonials } from '../components/Testimonials'
@@ -13,6 +14,7 @@ export function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <ConnectionSection />
         <Features />
         <ScreenshotShowcase />
         <Testimonials />

@@ -23,6 +23,10 @@ const iconAccents: Record<IconName, string> = {
   sunBright: 'bg-primary/10 text-primary',
   drop: 'bg-rose-500/10 text-rose-500',
   plus: 'bg-primary/10 text-primary',
+  link: 'bg-primary/15 text-primary',
+  offline: 'bg-emerald-500/10 text-emerald-500',
+  mosque: 'bg-teal-500/10 text-teal-500',
+  restaurant: 'bg-orange-500/10 text-orange-500',
 }
 
 export function Features() {
@@ -34,8 +38,8 @@ export function Features() {
             Everything you need to stay connected
           </h2>
           <p className="mt-4 text-base text-ink-soft sm:text-lg dark:text-dark-ink-soft">
-            A complete toolkit for daily worship — from the day\'s prayers to the beauty of the
-            Qur\'an and the remembrance of Allah.
+            A complete toolkit for daily worship — from the day's prayers to the beauty of the
+            Qur'an and the remembrance of Allah.
           </p>
         </div>
 
@@ -56,20 +60,12 @@ export function Features() {
               </p>
             </article>
           ))}
-          <article
-            key="more-to-come"
-            className="group rounded-card border border-border bg-surface p-6 transition hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 dark:border-dark-border dark:bg-dark-surface"
-          >
-            <div
-              className={`flex h-12 w-12 items-center justify-center rounded-2xl ${iconAccents.plus}`}
-            >
-              <Icon name="plus" className="h-6 w-6" />
-            </div>
-            <h3 className="mt-5 text-lg font-bold">More to come</h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-              And much more on the way.
+          <div key="more-to-come" className="col-span-full mt-6 flex items-center justify-center gap-2.5 sm:mt-8">
+            <Icon name="plus" className="h-4 w-4 flex-none text-ink-mute dark:text-dark-ink-mute" />
+            <p className="text-center text-sm text-ink-soft dark:text-dark-ink-soft">
+              <span className="font-semibold">More to come</span> — and much more on the way.
             </p>
-          </article>
+          </div>
         </div>
       </div>
     </section>

@@ -22,6 +22,10 @@ export type IconName =
   | 'sunBright'
   | 'drop'
   | 'plus'
+  | 'link'
+  | 'offline'
+  | 'mosque'
+  | 'restaurant'
 
 const paths: Record<IconName, React.ReactNode> = {
   quran: (
@@ -106,6 +110,34 @@ const paths: Record<IconName, React.ReactNode> = {
   ),
   drop: <path d="M12 3c3 4.5 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-6.5 6-11Z" />,
   plus: <path d="M12 5v14M5 12h14" />,
+  link: (
+    <>
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </>
+  ),
+  offline: (
+    <>
+      <path d="m2 2 20 20" />
+      <path d="M5.78 5.78A7 7 0 0 0 9 20h8.5a4.5 4.5 0 0 0 1.94-8.44 7 7 0 0 0-13.66-5.78Z" />
+    </>
+  ),
+  mosque: (
+    <>
+      <path d="M12 3c-2 2.5-4 3-4 3s2 1 2 3h4c0-2 2-3 2-3s-2-.5-4-3Z" />
+      <path d="M5 20h14" />
+      <path d="M7 20v-9h10v9" />
+      <path d="M7 11H5l1.5-2.5L8 11H7Z" />
+      <path d="M17 11h2l-1.5-2.5L16 11h1Z" />
+    </>
+  ),
+  restaurant: (
+    <>
+      <path d="M4 3v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3" />
+      <path d="M7 3v18" />
+      <path d="M20 3v6a4 4 0 0 1-4 4v8" />
+    </>
+  ),
 }
 
 interface IconProps extends SVGProps<SVGSVGElement> {

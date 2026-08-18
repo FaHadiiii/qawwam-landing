@@ -12,10 +12,26 @@ export interface Feature {
     | "chart"
     | "moon"
     | "globe"
-    | "drop";
+    | "drop"
+    | "link"
+    | "offline"
+    | "mosque"
+    | "restaurant";
 }
 
 export const FEATURES: Feature[] = [
+  {
+    title: "Linked Accounts",
+    description:
+      "Connect with family and friends using a profile code, choose exactly what to share, and grow in worship together — with pokes and shared progress.",
+    icon: "link",
+  },
+  {
+    title: "Offline-first",
+    description:
+      "The Qur'an, fonts, duas, tasbih and your records all work without a network — and sync automatically when you're back online.",
+    icon: "offline",
+  },
   {
     title: "Qur'an",
     description:
@@ -45,6 +61,18 @@ export const FEATURES: Feature[] = [
     description:
       "A smooth compass that points to the Kaabah from your current location, so you are always facing the right direction.",
     icon: "compass",
+  },
+  {
+    title: "Mosque",
+    description:
+      "Find nearby mosques in a tap — locate the closest masjid for your next prayer, wherever you are.",
+    icon: "mosque",
+  },
+  {
+    title: "Halal Restaurant",
+    description:
+      "Discover halal restaurants and eateries nearby, with one tap that takes you straight to the map.",
+    icon: "restaurant",
   },
   {
     title: "Islamic Events",

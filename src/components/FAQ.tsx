@@ -20,8 +20,12 @@ const FAQS = [
     a: "Prayer times are sourced from official national religious authorities where available — such as JAKIM, Kemenag, MUIS and KHEU — and otherwise computed using reliable astronomical calculations.",
   },
   {
+    q: "How do linked accounts work?",
+    a: "Create a profile code in the app, then share it with family or friends. Once they connect, you can grant each other access to chosen analytics — prayer, fasting, Qur'an reading or menstrual — and send gentle pokes to stay accountable.",
+  },
+  {
     q: "Is my data private?",
-    a: "Your account data is synced securely and is never sold. You can delete your account and data at any time. See our Privacy Policy for full details.",
+    a: "Your account data is synced securely and is never sold. Sharing is always opt-in: you decide exactly which analytics a linked account can see, and you can revoke access or delete your account and data at any time. See our Privacy Policy for full details.",
   },
   {
     q: "Which devices are supported?",
