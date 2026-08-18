@@ -15,6 +15,12 @@ const FOOTER_LINKS = [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Use", href: "/terms" },
       { label: "Acknowledgement", href: "/acknowledgement" },
+    ],
+  },
+  {
+    heading: "Support",
+    links: [
+      { label: "support@qawwam.app", href: "mailto:support@qawwam.app" },
       { label: "Account Deletion", href: "/account-deletion" },
     ],
   },
@@ -24,13 +30,13 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-secondary/40 py-14 dark:border-dark-border dark:bg-dark-secondary/40">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.8fr_1fr_1fr_1fr] md:gap-14">
+          <div className="md:pr-6">
             <div className="flex items-center">
               <img src="/icons/logo.png" alt="Qawwam" className="h-8 w-auto" />
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-              Faith, together. A complete Islamic companion — prayer times, the
+              Faith, together. A complete Islamic companion. Prayer times,
               Qur'an, duas, tasbih and connected worship, thoughtfully designed
               for daily life.
             </p>
@@ -44,12 +50,22 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="text-sm text-ink-soft transition hover:text-primary dark:text-dark-ink-soft dark:hover:text-primary"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith("mailto:") ||
+                    link.href.startsWith("http") ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-ink-soft transition hover:text-primary dark:text-dark-ink-soft dark:hover:text-primary"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-ink-soft transition hover:text-primary dark:text-dark-ink-soft dark:hover:text-primary"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -61,8 +77,8 @@ export function Footer() {
           <p className="text-sm text-ink-soft dark:text-dark-ink-soft">
             © {new Date().getFullYear()} Qawwam. All rights reserved.
           </p>
-          <p className="text-xs text-ink-mute dark:text-dark-ink-mute">
-            Made with <span className="text-primary">♥</span> for the ummah
+          <p className="text-[13px] text-ink-mute dark:text-dark-ink-mute">
+            Made with <span className="text-primary">♥</span> for the Ummah
           </p>
         </div>
       </div>
