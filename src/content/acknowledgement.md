@@ -1,4 +1,4 @@
-**Effective date:** 2026-08-14 · **Version:** 1.0.0
+**Effective date:** 2026-09-16 · **Version:** 1.1.0
 
 Qawwam draws on the work of numerous institutions and individuals to provide
 authentic Islamic content. We are grateful for their contribution to the
@@ -18,10 +18,27 @@ ummah and acknowledge the following sources.
 
 ## 2. Qur'an
 
-- Qur'an text, transliteration, translations, and recitations are provided
-  through publicly available Qur'an data sources. Audio recitations remain the
-  property of their respective reciters and publishers, and are reproduced for
-  personal devotional use.
+- **Qur'an text** — the Uthmani script is the **Tanzil Project**'s
+  ([tanzil.net](https://tanzil.net)), reproduced unmodified under the **Creative
+  Commons Attribution 3.0** licence. Tanzil's copyright notice is carried in full
+  in the search index.
+- **Translations** — English: *Sahih International*; Malay: *Abdullah Basmeih*.
+- **Arabic commentary** — *Tafsir Al-Muyassar*, King Fahd Qur'an Printing
+  Complex. It is commentary on the verse rather than a translation of it, and is
+  presented as commentary in the App.
+- **Transliteration** — the *en.transliteration* edition.
+- **Printed Mushaf** — the per-page glyph fonts and the word and page layout
+  databases come from the **Quranic Universal Library (QUL)**
+  ([qul.tarteel.ai](https://qul.tarteel.ai)) and render the **KFGQPC Uthmanic
+  script v4** print (1441H) of the King Fahd Qur'an Printing Complex.
+- **Search index** — Tanzil Quran Text (Simple, Version 1.1), also under the
+  Creative Commons Attribution 3.0 licence.
+- **Recitations** — audio is streamed from
+  [islamic.network](https://islamic.network). Recitations remain the property of
+  their respective reciters and publishers, and are reproduced for personal
+  devotional use.
+- The translation, commentary and transliteration editions above were obtained
+  through [alquran.cloud](https://alquran.cloud).
 
 ## 3. Supplications (Duas) and Names of Allah
 
@@ -36,12 +53,12 @@ ummah and acknowledge the following sources.
 
 ## 5. Copyright Notice
 
-All Qur'anic text and audio, duas, translations, and prayer data are the
-intellectual property of their respective owners and are used with
-acknowledgement. Qawwam does not claim ownership of third-party content and
-makes it available for non-commercial personal use. If you are a rights holder
-and believe any content requires attribution or removal, please contact us via
-the details provided in the App.
+All Qur'anic text and audio, Mushaf fonts and layout data, duas, translations,
+and prayer data are the intellectual property of their respective owners and are
+used with acknowledgement. Qawwam does not claim ownership of third-party
+content and makes it available for non-commercial personal use. If you are a
+rights holder and believe any content requires attribution or removal, please
+contact us via the details provided in the App.
 
-We ask that users recite \`Bismillah\` and remember the contributors in their
+We ask that users recite `Bismillah` and remember the contributors in their
 duas.

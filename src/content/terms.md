@@ -25,7 +25,6 @@ educational use.
 - Google Sign-In is used for authentication; we never receive or store your
   Google password.
 - You may stop using the Service and request deletion of your data at any time.
-  See [Account Deletion](#account-deletion) for instructions.
 
 ## 4. Acceptable Use
 

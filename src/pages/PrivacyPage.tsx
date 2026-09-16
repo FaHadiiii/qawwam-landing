@@ -1,13 +1,16 @@
 import { DisclosurePage } from './DisclosurePage'
 import privacyContent from '../content/privacy.md?raw'
+import { disclosures } from '../content/disclosures'
+
+const meta = disclosures['privacy-policy']
 
 export function PrivacyPage() {
   return (
     <DisclosurePage
-      title="Privacy Policy"
+      title={meta.title}
       content={privacyContent}
-      updatedAt="2026-08-14"
-      version="1.0.0"
+      updatedAt={meta.updatedAt}
+      version={meta.version}
     />
   )
 }

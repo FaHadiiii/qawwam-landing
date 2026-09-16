@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "disclosures:sync": "node scripts/fetch-disclosures.mjs",
+    "disclosures:check": "node scripts/fetch-disclosures.mjs --check",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=qawwam-landing"
   },
