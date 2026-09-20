@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "AlbertSans";
+  src: url("../../public/fonts/AlbertSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("../../public/fonts/AlbertSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "AlbertSans";
+  src: url("../../public/fonts/AlbertSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { width: 1080px; height: 1920px; overflow: hidden; }
+
+body {
+  font-family: "AlbertSans", system-ui, -apple-system, sans-serif;
+  color: #242424;
+  -webkit-font-smoothing: antialiased;
+}
+
+.screen {
+  --device-w: 680px;
+  --device-h: 1430px;
+  --device-r: 104px;
+  --screen-r: 84px;
+
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(41, 101, 228, 0.16) 0%, rgba(41, 101, 228, 0.06) 42%, rgba(41, 101, 228, 0) 68%),
+    linear-gradient(180deg, #ffffff 0%, #f7faff 48%, #e9f1ff 100%);
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 96px;
+  text-align: center;
+}
+
+.copy h1 {
+  font-size: 76px;
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.copy p {
+  margin-top: 22px;
+  font-size: 33px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #5c6472;
+}
+
+.authorities {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+}
+
+.authorities img {
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+}
+
+.screen.top .copy { margin-top: 88px; }
+.screen.top .device-wrap { margin-top: 58px; }
+.screen.bottom .device-wrap { margin-top: 74px; }
+.screen.bottom .copy { margin-top: 54px; }
+
+/* Extra copy (authority logos) needs a slightly tighter stack. */
+.screen.compact .copy { margin-top: 72px; }
+.screen.compact .device-wrap { margin-top: 40px; }
+.screen.compact {
+  --device-w: 664px;
+  --device-h: 1396px;
+  --device-r: 102px;
+  --screen-r: 82px;
+}
+
+.device-wrap {
+  position: relative;
+  z-index: 2;
+  flex: none;
+}
+
+.device-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(41, 101, 228, 0.22) 0%, rgba(41, 101, 228, 0.08) 48%, rgba(41, 101, 228, 0) 70%);
+  filter: blur(14px);
+}
+
+.device {
+  position: relative;
+  width: var(--device-w);
+  height: var(--device-h);
+  padding: 20px;
+  border-radius: var(--device-r);
+  background: linear-gradient(145deg, #4a4a4a 0%, #333 15%, #252525 50%, #333 85%, #4a4a4a 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px rgba(255, 255, 255, 0.25),
+    0 60px 120px -30px rgba(15, 23, 42, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.device .screen-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--screen-r);
+  overflow: hidden;
+  background: #000;
+}
+
+.device .screen-inner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
