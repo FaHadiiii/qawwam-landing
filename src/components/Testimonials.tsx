@@ -1,28 +1,29 @@
+import { useTheme } from '../lib/theme-context'
+
 const TESTIMONIALS = [
   {
     name: 'Aisyah R.',
     role: 'Kuala Lumpur, MY',
     quote:
-      'The prayer arc on the home screen is genius — I always know exactly how much time is left for the next salah at a glance.',
-    avatar: 'https://i.pravatar.cc/80?img=47',
+      'The prayer times are exact — Qawwam uses the official JAKIM timetable for my area, so every salah starts to the minute. It is the most reliable app I have used.',
   },
   {
     name: 'Muhammad F.',
     role: 'Singapore, SG',
     quote:
       'Linking with my siblings changed everything. We poke each other when one of us misses a prayer, and sharing our progress keeps us accountable.',
-    avatar: 'https://i.pravatar.cc/80?img=68',
   },
   {
     name: 'Nurul H.',
     role: 'Jakarta, ID',
     quote:
-      'I use the tasbih and daily duas every single day. Having everything — prayers, Qur\'an, duas — in one clean app is a blessing.',
-    avatar: 'https://i.pravatar.cc/80?img=45',
+      'The Qur\'an reader is stunning — tajweed colouring, translation and recitation in one place, and I can jump to any ayah just by reciting it.',
   },
 ]
 
 export function Testimonials() {
+  const { theme } = useTheme()
+
   return (
     <section id="testimonials" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
@@ -53,10 +54,10 @@ export function Testimonials() {
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5 dark:border-dark-border">
                 <img
-                  src={t.avatar}
+                  src={`/icons/${theme}-default-pfp.png`}
                   alt={`${t.name} avatar`}
                   loading="lazy"
-                  className="h-10 w-10 rounded-full object-cover ring-2 ring-primary/20"
+                  className="h-10 w-10 rounded-full object-cover"
                 />
                 <div>
                   <p className="text-sm font-bold">{t.name}</p>

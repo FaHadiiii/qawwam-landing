@@ -2,13 +2,20 @@ import { PhoneFrame } from "./PhoneFrame";
 
 const SCREENSHOTS = [
   { name: "home", label: "Home" },
-  { name: "account_link", label: "Linked Accounts" },
-  { name: "account_link_analytic", label: "Shared Insights" },
+  { name: "prayer_guide", label: "Prayer Guide" },
   { name: "quran_1", label: "Qur'an" },
   { name: "quran_2", label: "Qur'an reader" },
-  { name: "qiblat", label: "Qiblat" },
+  { name: "quran_voice_search", label: "Voice Search" },
+  { name: "quran_notes", label: "Qur'an Notes" },
+  { name: "dua", label: "Duas" },
   { name: "tasbih", label: "Tasbih" },
+  { name: "qiblat", label: "Qiblat" },
+  { name: "prophets", label: "Prophets" },
   { name: "analytics", label: "Analytics" },
+  { name: "account_link", label: "Linked Accounts" },
+  { name: "account_link_setting", label: "Sharing Controls" },
+  { name: "poke", label: "Pokes" },
+  { name: "account_link_analytic", label: "Shared Insights" },
 ];
 
 export function ScreenshotShowcase() {
