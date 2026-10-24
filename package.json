@@ -12,6 +12,7 @@
     "disclosures:sync": "node scripts/fetch-disclosures.mjs",
     "disclosures:check": "node scripts/fetch-disclosures.mjs --check",
     "preview": "vite preview",
+    "deploy:dev": "npm run build && wrangler pages deploy dist --project-name=qawwam-landing --branch=dev",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=qawwam-landing"
   },
   "dependencies": {

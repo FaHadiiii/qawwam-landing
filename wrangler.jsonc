@@ -4,7 +4,18 @@
   "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-08-15",
   "vars": {
-    // Read by functions/_lib/api.ts. Override with --binding for local dev.
-    "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
+    // TEMPORARY. Production points at the DEV api because the prod worker does
+    // not have /khatam-invite yet. When it does, change this to
+    // https://qawwam-api-prod.hadiayo39.workers.dev AND change VITE_API_BASE in
+    // `npm run deploy` in package.json, then deploy again. The two must match:
+    // this one feeds the Pages Functions, VITE_API_BASE feeds the browser.
+    "API_BASE": "https://qawwam-api.hadiayo39.workers.dev"
+  },
+  "env": {
+    "preview": {
+      "vars": {
+        "API_BASE": "https://qawwam-api.hadiayo39.workers.dev"
+      }
+    }
   }
 }
