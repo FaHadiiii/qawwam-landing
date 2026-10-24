@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["2A93BL62NM.com.qawwam.app"],
+        "components": [
+          {
+            "/": "/khatam/*",
+            "comment": "Khatam invite links"
+          }
+        ]
+      }
+    ]
+  }
+}

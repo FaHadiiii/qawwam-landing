@@ -6,6 +6,7 @@ import { TermsPage } from './pages/TermsPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { AcknowledgementPage } from './pages/AcknowledgementPage'
 import { AccountDeletionPage } from './pages/AccountDeletionPage'
+import { KhatamInvitePage } from './pages/KhatamInvitePage'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/acknowledgement" element={<AcknowledgementPage />} />
           <Route path="/account-deletion" element={<AccountDeletionPage />} />
+          <Route path="/khatam/:token" element={<KhatamInvitePage />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>

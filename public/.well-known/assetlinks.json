@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.qawwam.app",
+      "sha256_cert_fingerprints": [
+        "DE:E3:DD:A4:8C:97:1C:90:CD:0E:54:7E:F0:60:EE:E1:47:AA:E3:03:F3:47:38:48:96:35:DF:F4:99:3B:20:EA"
+      ]
+    }
+  }
+]
