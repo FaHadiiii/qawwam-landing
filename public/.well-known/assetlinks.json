@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.qawwam.app",
       "sha256_cert_fingerprints": [
-        "DE:E3:DD:A4:8C:97:1C:90:CD:0E:54:7E:F0:60:EE:E1:47:AA:E3:03:F3:47:38:48:96:35:DF:F4:99:3B:20:EA"
+        "DE:E3:DD:A4:8C:97:1C:90:CD:0E:54:7E:F0:60:EE:E1:47:AA:E3:03:F3:47:38:48:96:35:DF:F4:99:3B:20:EA",
+        "40:C3:4A:00:20:00:3C:89:A6:C2:FB:38:06:C7:6C:01:CE:EF:BC:3D:33:A5:30:FF:55:AB:45:A0:81:BB:33:9D"
       ]
     }
   }
