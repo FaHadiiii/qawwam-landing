@@ -2,5 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "qawwam-landing",
   "pages_build_output_dir": "./dist",
-  "compatibility_date": "2026-08-15"
+  "compatibility_date": "2026-08-15",
+  "vars": {
+    // Read by functions/_lib/api.ts. Override with --binding for local dev.
+    "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
+  }
 }
