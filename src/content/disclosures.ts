@@ -13,5 +13,5 @@ export interface DisclosureMeta {
 export const disclosures = {
   'terms-of-use': { title: "Terms of Use", version: "1.0.0", updatedAt: "2026-08-14" },
   'privacy-policy': { title: "Privacy Policy", version: "1.0.0", updatedAt: "2026-08-14" },
-  'acknowledgement': { title: "Acknowledgement", version: "1.1.0", updatedAt: "2026-09-16" },
+  'acknowledgement': { title: "Acknowledgement", version: "1.2.1", updatedAt: "2026-10-25" },
 } satisfies Record<string, DisclosureMeta>
