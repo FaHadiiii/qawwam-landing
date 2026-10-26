@@ -69,17 +69,17 @@ binding instead.
   (`--branch=dev`); `qawwam.app` is untouched.
 - `npm run deploy` — production, publishes `qawwam.app`.
 
-**Both currently point at the dev API.** `API_BASE` in `wrangler.jsonc` feeds the
-Pages Functions; `VITE_API_BASE` in `.env.production` feeds the browser bundle —
-that file is loaded by every `vite build`, including the Git-triggered Pages
-build. They are separate and must match. This is temporary: when the prod worker
-has `/khatam-invite`, change both to `https://qawwam-api-prod.hadiayo39.workers.dev`
-and redeploy.
+`API_BASE` in `wrangler.jsonc` feeds the Pages Functions; `VITE_API_BASE` in
+`.env.production` feeds the browser bundle — that file is loaded by every
+`vite build`, including the Git-triggered Pages build. They are separate and must
+match.
+
+Production reads invites from the prod API, because that is where the store build
+mints them; preview deployments keep using the dev API. Both API environments
+serve `GET /khatam-invite/:token`.
 
 `main` is the production branch, so a push to it also triggers a Pages build that
-publishes `qawwam.app`. That is safe while both settings point at dev. Before
-switching them to prod, deploy the prod API first — otherwise every invite link
-would report itself as invalid.
+publishes `qawwam.app`.
 
 The card is drawn with satori. Its bundled fork cannot lay out non-Latin text,
 and Albert Sans has no Arabic coverage, so a non-Latin journey or owner name is

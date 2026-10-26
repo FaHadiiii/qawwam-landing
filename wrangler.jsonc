@@ -4,12 +4,11 @@
   "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-08-15",
   "vars": {
-    // TEMPORARY. Production points at the DEV api because the prod worker does
-    // not have /khatam-invite yet. When it does, change this to
-    // https://qawwam-api-prod.hadiayo39.workers.dev AND change VITE_API_BASE in
-    // `npm run deploy` in package.json, then deploy again. The two must match:
-    // this one feeds the Pages Functions, VITE_API_BASE feeds the browser.
-    "API_BASE": "https://qawwam-api.hadiayo39.workers.dev"
+    // Invite tokens are minted by the store app against the PROD api, so the
+    // Pages Functions must look them up there too. Keep this in step with
+    // VITE_API_BASE in `.env.production`: this one feeds the Functions, that
+    // one feeds the browser bundle.
+    "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
   },
   "env": {
     "preview": {
