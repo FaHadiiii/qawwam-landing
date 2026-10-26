@@ -8,11 +8,9 @@ const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.qawwam.app'
 const SITE_TITLE = 'Qawwam — Faith, Together'
 
 const BADGE =
-  'inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary'
+  'inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-primary'
 const PRIMARY_BUTTON =
   'mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-[0_2px_10px_rgba(41,101,228,0.35)] transition hover:bg-primary/90 sm:w-auto'
-const SOFT_CARD =
-  'mt-8 rounded-2xl border border-border bg-surface px-5 py-4 text-sm text-ink-soft dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink-soft'
 const NOTE_CARD =
   'mt-3 rounded-2xl border border-border bg-surface px-5 py-3 text-sm text-ink-soft dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink-soft'
 const FOOTNOTE = 'mt-6 text-xs text-ink-soft dark:text-dark-ink-soft'
@@ -84,7 +82,7 @@ function Ready({
 
   return (
     <>
-      <span className={BADGE}>Khatam invite</span>
+      <span className={BADGE}>Group Khatam</span>
 
       {owner.avatarUrl && (
         <img
@@ -115,14 +113,10 @@ function Ready({
         Open this invitation in Qawwam to preview the journey and join.
       </p>
 
-      {isAndroid ? (
+      {isAndroid && (
         <button type="button" onClick={onOpen} className={PRIMARY_BUTTON}>
           Open in Qawwam
         </button>
-      ) : (
-        <p className={SOFT_CARD}>
-          Open this link on your Android phone. The iOS app is coming soon.
-        </p>
       )}
 
       <div className="mt-8 flex justify-center">
@@ -140,7 +134,7 @@ function Ready({
 function Invalid() {
   return (
     <>
-      <span className={BADGE}>Khatam invite</span>
+      <span className={BADGE}>Group Khatam</span>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
         This invite link is no longer valid
       </h1>
@@ -160,7 +154,7 @@ function Invalid() {
 function Failed({ onRetry }: { onRetry: () => void }) {
   return (
     <>
-      <span className={BADGE}>Khatam invite</span>
+      <span className={BADGE}>Group Khatam</span>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
         We couldn't load this invitation
       </h1>
