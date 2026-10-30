@@ -37,75 +37,78 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 py-20 sm:py-24">
-      <div className="mx-auto max-w-4xl px-5">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Frequently asked questions
-          </h2>
-          <p className="mt-4 text-base text-ink-soft dark:text-dark-ink-soft">
-            Everything you might want to know before downloading.
-          </p>
-        </div>
-
-        <div className="mt-12 space-y-3">
-          {FAQS.map((faq, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div
-                key={faq.q}
-                className="overflow-hidden rounded-card border border-border bg-surface transition dark:border-dark-border dark:bg-dark-surface"
+    <section
+      id="faq"
+      className="scroll-mt-24 border-t border-border py-20 dark:border-dark-border sm:py-32"
+    >
+      <div className="mx-auto max-w-6xl px-5">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-ink-mute dark:text-dark-ink-mute">
+              Questions
+            </p>
+            <h2 className="mt-6 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.04em]">
+              Frequently asked.
+            </h2>
+            <p className="mt-6 max-w-xs text-[15px] leading-7 text-ink-soft dark:text-dark-ink-soft">
+              Something else on your mind? Read our{" "}
+              <Link
+                to="/privacy"
+                className="underline underline-offset-2 hover:text-ink dark:hover:text-dark-ink"
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link
+                to="/terms"
+                className="underline underline-offset-2 hover:text-ink dark:hover:text-dark-ink"
+              >
+                Terms of Use
+              </Link>
+              , or reach out through the app.
+            </p>
+          </div>
+
+          <div>
+            {FAQS.map((faq, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <div
+                  key={faq.q}
+                  className="border-b border-border first:border-t dark:border-dark-border"
                 >
-                  <span className="font-semibold">{faq.q}</span>
-                  <span
-                    className={`flex h-8 w-8 flex-none items-center justify-center rounded-full bg-secondary text-ink-soft transition-transform duration-300 dark:bg-dark-secondary dark:text-dark-ink-soft ${
-                      isOpen ? "rotate-180" : ""
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-6 py-5 text-left"
+                  >
+                    <span className="text-[15px] font-medium">{faq.q}</span>
+                    <Icon
+                      name="plus"
+                      className={`h-4 w-4 flex-none text-ink-mute transition-transform duration-300 dark:text-dark-ink-mute ${
+                        isOpen ? "rotate-45" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ease-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
-                    <Icon name="chevronDown" className="h-4 w-4" />
-                  </span>
-                </button>
-                <div
-                  className={`grid transition-all duration-300 ease-out ${
-                    isOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-[15px] leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-                      {faq.a}
-                    </p>
+                    <div className="overflow-hidden">
+                      <p className="max-w-xl pb-5 text-sm leading-7 text-ink-soft dark:text-dark-ink-soft">
+                        {faq.a}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-
-        <p className="mt-8 text-center text-sm text-ink-soft dark:text-dark-ink-soft">
-          Something else on your mind? Read our{" "}
-          <Link
-            to="/privacy"
-            className="font-semibold text-primary underline underline-offset-2"
-          >
-            Privacy Policy
-          </Link>{" "}
-          and{" "}
-          <Link
-            to="/terms"
-            className="font-semibold text-primary underline underline-offset-2"
-          >
-            Terms of Use
-          </Link>
-          , or reach out through the app.
-        </p>
       </div>
     </section>
   );

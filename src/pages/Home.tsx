@@ -1,8 +1,7 @@
 import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
+import { FeaturesGrid } from '../components/FeaturesGrid'
 import { ConnectionSection } from '../components/ConnectionSection'
-import { Features } from '../components/Features'
-import { ScreenshotShowcase } from '../components/ScreenshotShowcase'
 import { Testimonials } from '../components/Testimonials'
 import { FAQ } from '../components/FAQ'
 import { DownloadCTA } from '../components/DownloadCTA'
@@ -14,9 +13,8 @@ export function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
+        <FeaturesGrid />
         <ConnectionSection />
-        <Features />
-        <ScreenshotShowcase />
         <Testimonials />
         <FAQ />
         <DownloadCTA />

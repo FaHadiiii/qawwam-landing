@@ -1,73 +1,61 @@
-import { useTheme } from '../lib/theme-context'
-
 const TESTIMONIALS = [
   {
-    name: 'Aisyah R.',
-    role: 'Kuala Lumpur, MY',
+    name: "Aisyah R.",
+    role: "Kuala Lumpur, MY",
     quote:
-      'The prayer times are exact — Qawwam uses the official JAKIM timetable for my area, so every salah starts to the minute. It is the most reliable app I have used.',
+      "The prayer times are exact — Qawwam uses the official JAKIM timetable for my area, so every salah starts to the minute. It is the most reliable app I have used.",
   },
   {
-    name: 'Muhammad F.',
-    role: 'Singapore, SG',
+    name: "Muhammad F.",
+    role: "Singapore, SG",
     quote:
-      'Linking with my siblings changed everything. We poke each other when one of us misses a prayer, and sharing our progress keeps us accountable.',
+      "Linking with my siblings changed everything. We poke each other when one of us misses a prayer, and sharing our progress keeps us accountable.",
   },
   {
-    name: 'Nurul H.',
-    role: 'Jakarta, ID',
+    name: "Nurul H.",
+    role: "Jakarta, ID",
     quote:
-      'The Qur\'an reader is stunning — tajweed colouring, translation and recitation in one place, and I can jump to any ayah just by reciting it.',
+      "The Qur'an reader is stunning — tajweed colouring, translation and recitation in one place, and I can jump to any ayah just by reciting it.",
   },
-]
+];
 
 export function Testimonials() {
-  const { theme } = useTheme()
-
   return (
-    <section id="testimonials" className="scroll-mt-24 py-20 sm:py-24">
+    <section
+      id="testimonials"
+      className="scroll-mt-24 border-t border-border py-20 dark:border-dark-border sm:py-32"
+    >
       <div className="mx-auto max-w-6xl px-5">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Loved by the ummah
-          </h2>
-          <p className="mt-4 text-base text-ink-soft sm:text-lg dark:text-dark-ink-soft">
-            Early users are already making Qawwam part of their daily routine.
+        <div className="grid gap-6 md:grid-cols-2 md:items-end">
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-ink-mute dark:text-dark-ink-mute">
+              Voices
+            </p>
+            <h2 className="mt-6 max-w-md text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.04em]">
+              Loved by the ummah.
+            </h2>
+          </div>
+          <p className="max-w-sm text-[15px] leading-7 text-ink-soft md:justify-self-end dark:text-dark-ink-soft">
+            Early users on why Qawwam has become part of their daily routine.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
+        <div className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-3">
+          {TESTIMONIALS.map((testimonial) => (
             <figure
-              key={t.name}
-              className="flex flex-col rounded-card border border-border bg-surface p-6 dark:border-dark-border dark:bg-dark-surface"
+              key={testimonial.name}
+              className="border-t border-border pt-6 dark:border-dark-border"
             >
-              <div className="flex gap-0.5 text-amber-400" aria-label="5 star rating">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
-                    <path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8L10 14.9l-5.3 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
-                  </svg>
-                ))}
-              </div>
-              <blockquote className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-soft dark:text-dark-ink-soft">
-                “{t.quote}”
+              <blockquote className="text-[17px] leading-8 tracking-[-0.01em]">
+                “{testimonial.quote}”
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5 dark:border-dark-border">
-                <img
-                  src={`/icons/${theme}-default-pfp.png`}
-                  alt={`${t.name} avatar`}
-                  loading="lazy"
-                  className="h-10 w-10 rounded-full object-cover"
-                />
-                <div>
-                  <p className="text-sm font-bold">{t.name}</p>
-                  <p className="text-xs text-ink-mute dark:text-dark-ink-mute">{t.role}</p>
-                </div>
+              <figcaption className="mt-6 text-[11px] uppercase tracking-[0.16em] text-ink-mute dark:text-dark-ink-mute">
+                {testimonial.name} · {testimonial.role}
               </figcaption>
             </figure>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
