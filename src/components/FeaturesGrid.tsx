@@ -6,7 +6,7 @@ export function FeaturesGrid() {
   return (
     <section id="features" className="scroll-mt-24 pb-20 sm:pb-28">
       <div className="mx-auto max-w-4xl px-5">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
           {Array.from({ length: PLACEHOLDER_COUNT }).map((_, index) => (
             <motion.div
               key={index}

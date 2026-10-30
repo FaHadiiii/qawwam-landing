@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Icon } from "./Icon";
 import { useGallery } from "../lib/gallery-context";
+import { useTheme } from "../lib/theme-context";
 
 const NAV_LINKS = [
   { href: "/#features", label: "Features" },
@@ -39,9 +40,11 @@ function UserJotLogo({ className = "h-4 w-4" }: { className?: string }) {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { openGallery } = useGallery();
+  const { theme, toggle } = useTheme();
 
   return (
-    <header className="relative z-40 pt-8 sm:pt-12">
+    <>
+      <header className="relative z-40 pt-8 sm:pt-12">
       <motion.nav
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -113,7 +116,7 @@ export function Navbar() {
       </motion.nav>
 
       {open && (
-        <div className="border-y border-border bg-paper px-5 py-2 md:hidden dark:border-dark-border dark:bg-dark-bg">
+        <div className="absolute inset-x-0 top-full z-50 border-y border-border bg-paper py-2 md:hidden dark:border-dark-border dark:bg-dark-bg">
           <div className="flex flex-col">
             {NAV_LINKS.map((link) =>
               "href" in link ? (
@@ -121,7 +124,7 @@ export function Navbar() {
                   key={link.label}
                   to={link.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-border py-3.5 text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
+                  className="border-b border-border px-5 py-3.5 text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
                 >
                   {link.label}
                 </Link>
@@ -133,7 +136,7 @@ export function Navbar() {
                     setOpen(false);
                     openGallery();
                   }}
-                  className="border-b border-border py-3.5 text-left text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
+                  className="border-b border-border px-5 py-3.5 text-left text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
                 >
                   {link.label}
                 </button>
@@ -144,7 +147,7 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 py-3.5 text-sm text-ink-soft dark:text-dark-ink-soft"
+              className="flex items-center gap-2 px-5 py-3.5 text-sm text-ink-soft dark:text-dark-ink-soft"
             >
               <UserJotLogo className="h-4 w-4 text-ink dark:text-dark-ink" />
               Feedback
@@ -152,6 +155,19 @@ export function Navbar() {
           </div>
         </div>
       )}
-    </header>
+      </header>
+
+      <button
+        type="button"
+        onClick={toggle}
+        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        className="fixed bottom-5 right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-paper/90 text-ink backdrop-blur transition-colors hover:bg-secondary dark:border-dark-border dark:bg-dark-bg/90 dark:text-dark-ink dark:hover:bg-dark-secondary"
+      >
+        <Icon
+          name={theme === "dark" ? "sunBright" : "moonStar"}
+          className="h-4 w-4"
+        />
+      </button>
+    </>
   );
 }

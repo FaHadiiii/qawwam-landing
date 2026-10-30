@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 import { Icon } from "./Icon";
+import { Reveal } from "./Reveal";
 
 const FAQS = [
   {
@@ -37,20 +39,18 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section
-      id="faq"
-      className="scroll-mt-24 border-t border-border py-20 dark:border-dark-border sm:py-32"
-    >
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
-          <div>
-            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-ink-mute dark:text-dark-ink-mute">
-              Questions
-            </p>
-            <h2 className="mt-6 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.05] tracking-[-0.04em]">
-              Frequently asked.
+    <section id="faq" className="scroll-mt-24 py-20 sm:py-32">
+      <div className="mx-auto max-w-4xl px-5">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+          <Reveal className="text-center lg:text-left">
+            <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">
+              Frequently
+              <br />
+              <span className="text-ink-soft dark:text-dark-ink-soft">
+                asked.
+              </span>
             </h2>
-            <p className="mt-6 max-w-xs text-[15px] leading-7 text-ink-soft dark:text-dark-ink-soft">
+            <p className="mx-auto mt-5 max-w-xs text-[15px] leading-7 text-ink-soft lg:mx-0 dark:text-dark-ink-soft">
               Something else on your mind? Read our{" "}
               <Link
                 to="/privacy"
@@ -64,49 +64,56 @@ export function FAQ() {
                 className="underline underline-offset-2 hover:text-ink dark:hover:text-dark-ink"
               >
                 Terms of Use
-              </Link>
-              , or reach out through the app.
+              </Link>.
             </p>
-          </div>
+          </Reveal>
 
           <div>
             {FAQS.map((faq, index) => {
-              const isOpen = openIndex === index;
-              return (
-                <div
-                  key={faq.q}
-                  className="border-b border-border first:border-t dark:border-dark-border"
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={faq.q}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.04,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="border-b border-border first:border-t dark:border-dark-border"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  className="flex w-full items-center justify-between gap-6 py-5 text-left"
                 >
-                  <button
-                    type="button"
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between gap-6 py-5 text-left"
-                  >
-                    <span className="text-[15px] font-medium">{faq.q}</span>
-                    <Icon
-                      name="plus"
-                      className={`h-4 w-4 flex-none text-ink-mute transition-transform duration-300 dark:text-dark-ink-mute ${
-                        isOpen ? "rotate-45" : ""
-                      }`}
-                    />
-                  </button>
-                  <div
-                    className={`grid transition-all duration-300 ease-out ${
-                      isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
+                  <span className="text-[15px] font-medium">{faq.q}</span>
+                  <Icon
+                    name="plus"
+                    className={`h-4 w-4 flex-none text-ink-mute transition-transform duration-300 dark:text-dark-ink-mute ${
+                      isOpen ? "rotate-45" : ""
                     }`}
-                  >
-                    <div className="overflow-hidden">
-                      <p className="max-w-xl pb-5 text-sm leading-7 text-ink-soft dark:text-dark-ink-soft">
-                        {faq.a}
-                      </p>
-                    </div>
+                  />
+                </button>
+                <div
+                  className={`grid transition-all duration-300 ease-out ${
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="max-w-2xl pb-5 text-sm leading-7 text-ink-soft dark:text-dark-ink-soft">
+                      {faq.a}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+              </motion.div>
+            );
+          })}
           </div>
         </div>
       </div>

@@ -4,8 +4,7 @@ import { FeaturesGrid } from '../components/FeaturesGrid'
 import { ConnectionSection } from '../components/ConnectionSection'
 import { Testimonials } from '../components/Testimonials'
 import { FAQ } from '../components/FAQ'
-import { DownloadCTA } from '../components/DownloadCTA'
-import { Footer } from '../components/Footer'
+import { FooterSection } from '../components/FooterSection'
 
 export function Home() {
   return (
@@ -17,9 +16,8 @@ export function Home() {
         <ConnectionSection />
         <Testimonials />
         <FAQ />
-        <DownloadCTA />
       </main>
-      <Footer />
+      <FooterSection />
     </div>
   )
 }

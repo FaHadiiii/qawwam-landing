@@ -1,37 +1,13 @@
 import { Link } from "react-router-dom";
-
-const FOOTER_LINKS = [
-  {
-    heading: "Product",
-    links: [
-      { label: "Gallery", href: "/#gallery" },
-      { label: "Together", href: "/#connect" },
-      { label: "Features", href: "/#features" },
-      { label: "FAQ", href: "/#faq" },
-    ],
-  },
-  {
-    heading: "Disclosures",
-    links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Use", href: "/terms" },
-      { label: "Acknowledgement", href: "/acknowledgement" },
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      { label: "support@qawwam.app", href: "mailto:support@qawwam.app" },
-      { label: "Account Deletion", href: "/account-deletion" },
-    ],
-  },
-];
+import { Reveal } from "./Reveal";
+import { FOOTER_LINKS } from "../data/footer";
+import { MadeWithLove } from "./FooterSection";
 
 export function Footer() {
   return (
     <footer className="border-t border-border bg-secondary/50 dark:border-dark-border dark:bg-dark-secondary/40">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
-        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-14">
+        <Reveal className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-14">
           <div className="md:pr-8">
             <img
               src="/icons/logo.png"
@@ -44,7 +20,7 @@ export function Footer() {
               className="hidden h-7 w-auto dark:block"
             />
             <p className="mt-6 max-w-xs text-sm leading-6 text-ink-soft dark:text-dark-ink-soft">
-              Faith, together. A complete Islamic companion — prayer times,
+              Faith, Together. A complete Islamic companion — prayer times,
               Qur'an, duas, tasbih and connected worship, thoughtfully designed
               for daily life.
             </p>
@@ -52,7 +28,7 @@ export function Footer() {
 
           {FOOTER_LINKS.map((column) => (
             <nav key={column.heading} aria-label={column.heading}>
-              <h3 className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-mute dark:text-dark-ink-mute">
+              <h3 className="text-[12px] font-medium text-ink-mute dark:text-dark-ink-mute">
                 {column.heading}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -78,12 +54,15 @@ export function Footer() {
               </ul>
             </nav>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 text-[11px] uppercase tracking-[0.14em] text-ink-mute sm:flex-row sm:items-center sm:justify-between dark:border-dark-border dark:text-dark-ink-mute">
+        <Reveal
+          delay={0.1}
+          className="mt-16 flex flex-col items-center gap-3 text-center text-sm text-ink-mute sm:flex-row sm:items-center sm:justify-between sm:text-left dark:border-dark-border dark:text-dark-ink-mute"
+        >
           <p>© {new Date().getFullYear()} Qawwam. All rights reserved.</p>
-          <p>Made for the Ummah</p>
-        </div>
+          <MadeWithLove />
+        </Reveal>
       </div>
     </footer>
   );

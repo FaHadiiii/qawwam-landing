@@ -67,9 +67,19 @@
   font-display: swap;
 }
 
+/* Caveat — handwritten accent font */
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/Caveat-Variable-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "AlbertSans", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
+  --font-caveat: "Caveat", cursive;
 
   /* Brand palette — mirrored from apps_theme.dart */
   --color-primary: #2965e4;

@@ -81,7 +81,7 @@ export function GalleryView({
       </header>
 
       <div className="relative mx-auto max-w-6xl px-5 pb-24 pt-12 sm:pt-16">
-        <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-white/45">
+        <p className="text-[11px] font-medium tracking-[0.24em] text-white/45">
           The Gallery
         </p>
         <h2 className="mt-4 text-[clamp(1.75rem,4vw,3rem)] font-medium leading-[1.05] tracking-[-0.03em]">
@@ -97,7 +97,7 @@ export function GalleryView({
                 loading="lazy"
                 className="aspect-[1320/2868] w-full rounded-md border border-white/10 object-cover"
               />
-              <figcaption className="mt-2.5 text-[11px] uppercase tracking-[0.16em] text-white/40">
+              <figcaption className="mt-2.5 text-[11px] tracking-[0.16em] text-white/40">
                 {screen.label}
               </figcaption>
             </figure>
