@@ -40,7 +40,7 @@ export function FAQ() {
 
   return (
     <section id="faq" className="scroll-mt-24 py-20 sm:py-32">
-      <div className="mx-auto max-w-4xl px-5">
+      <div className="mx-auto max-w-5xl px-5">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           <Reveal className="text-center lg:text-left">
             <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">

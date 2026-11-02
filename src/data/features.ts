@@ -16,7 +16,15 @@ export interface Feature {
     | "link"
     | "offline"
     | "mosque"
-    | "restaurant";
+    | "restaurant"
+    | "khatam"
+    | "notifications"
+    | "share"
+    | "prayerGuide"
+    | "prophets"
+    | "angels"
+    | "tahlil"
+    | "audio";
 }
 
 export const FEATURES: Feature[] = [
@@ -109,6 +117,54 @@ export const FEATURES: Feature[] = [
     description:
       "Fully localised in English, Bahasa Malaysia and Arabic — with a personalised home screen and font-size controls.",
     icon: "globe",
+  },
+  {
+    title: "Khatam",
+    description:
+      "Read the Qur'an together in a shared journey, with invites, progress and a collective finish.",
+    icon: "khatam",
+  },
+  {
+    title: "Notifications",
+    description:
+      "Adhan and prayer-time reminders that keep your day in rhythm.",
+    icon: "notifications",
+  },
+  {
+    title: "Share Cards",
+    description:
+      "Turn a verse, dua or milestone into a beautiful shareable card.",
+    icon: "share",
+  },
+  {
+    title: "Prayer Guide",
+    description:
+      "Step-by-step guidance for solat, from the basics to the details.",
+    icon: "prayerGuide",
+  },
+  {
+    title: "Prophets",
+    description:
+      "Stories and lessons from the prophets, in one place.",
+    icon: "prophets",
+  },
+  {
+    title: "Angels",
+    description:
+      "Learn about the angels and their roles in the unseen world.",
+    icon: "angels",
+  },
+  {
+    title: "Tahlil",
+    description:
+      "Guided tahlil and dhikr readings for gatherings and reflection.",
+    icon: "tahlil",
+  },
+  {
+    title: "Qur'an Audio",
+    description:
+      "Listen to recitation with a focused, whole-surah player.",
+    icon: "audio",
   },
 ];
 

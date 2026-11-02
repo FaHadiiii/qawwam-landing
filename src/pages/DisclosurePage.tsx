@@ -19,7 +19,7 @@ export function DisclosurePage({
   return (
     <PageShell>
       <div className="pt-24 pb-20">
-        <div className="mx-auto max-w-4xl px-5">
+        <div className="mx-auto max-w-5xl px-5">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-ink-soft dark:text-dark-ink-soft">
             <Link to="/" className="transition hover:text-primary">

@@ -47,7 +47,7 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="scroll-mt-24 py-20 sm:py-32">
-      <div className="mx-auto max-w-4xl px-5">
+      <div className="mx-auto max-w-5xl px-5">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">
             Loved by the

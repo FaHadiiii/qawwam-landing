@@ -17,18 +17,22 @@ export function FooterSection() {
   return (
     <section id="download" className="relative overflow-clip pt-20 sm:pt-32">
       <div className="relative">
-        <div className="relative z-10 mx-auto max-w-4xl px-5">
+        <div className="relative z-10 mx-auto max-w-5xl px-5">
           <Reveal className="bg-paper px-5 py-8 shadow-[0_16px_50px_rgba(0,0,0,0.05)] sm:px-12 sm:py-16 dark:bg-dark-bg dark:shadow-[0_16px_50px_rgba(0,0,0,0.35)]">
             <div className="text-center">
-              <img
-                src="/icons/logo.png"
-                alt="Qawwam"
-                className="mx-auto h-10 w-auto dark:hidden"
-              />
-              <img
-                src="/icons/logo-white.png"
-                alt="Qawwam"
-                className="mx-auto hidden h-10 w-auto dark:block"
+              <span
+                aria-hidden="true"
+                className="mx-auto inline-block h-10 w-[37.4px] bg-primary transition-colors duration-200"
+                style={{
+                  maskImage: "url(/icons/logo.png)",
+                  WebkitMaskImage: "url(/icons/logo.png)",
+                  maskSize: "contain",
+                  WebkitMaskSize: "contain",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  WebkitMaskPosition: "center",
+                }}
               />
 
               <h2 className="mt-8 text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">

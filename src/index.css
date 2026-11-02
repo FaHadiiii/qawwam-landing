@@ -76,23 +76,41 @@
   font-display: swap;
 }
 
+/* QCF4_BSML — surah-name glyphs used by the app */
+@font-face {
+  font-family: "QCF4_BSML";
+  src: url("/fonts/QCF4_BSML.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Uthmanic Hafs — Arabic dzikr text */
+@font-face {
+  font-family: "Hafs";
+  src: url("/fonts/UthmanicHafs_V22.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: "AlbertSans", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
   --font-caveat: "Caveat", cursive;
+  --font-surah: "QCF4_BSML", serif;
+  --font-arabic: "Hafs", serif;
 
   /* Brand palette — mirrored from apps_theme.dart */
   --color-primary: #2965e4;
-  --color-primary-soft: #eaf1fe;
-  --color-navy: #20335f;
-  --color-paper: #faf8f4;
+  --color-success: #5cb85c;
+  --color-paper: #ffffff;
   --color-surface: #ffffff;
   --color-secondary: #f1eee7;
   --color-border: #e6e1d7;
   --color-ink: #17160f;
   --color-ink-soft: #6d6b63;
   --color-ink-mute: #a6a299;
-  --color-gold: #f0c030;
 
   /* Dark tokens */
   --color-dark-bg: #0c0c0b;
@@ -102,9 +120,6 @@
   --color-dark-ink: #eeece6;
   --color-dark-ink-soft: #a9a69e;
   --color-dark-ink-mute: #767369;
-
-  --radius-card: 14px;
-  --radius-pill: 100px;
 }
 
 html {
@@ -137,15 +152,6 @@ h4 {
 ::selection {
   background: var(--color-ink);
   color: var(--color-paper);
-}
-
-/* Utility: hide scrollbars for horizontal scroll rows */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 /* Markdown article typography (disclosure pages) */
@@ -203,26 +209,8 @@ h4 {
   color: var(--color-dark-ink);
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .animate-fade-up {
-    animation: none;
   }
 }

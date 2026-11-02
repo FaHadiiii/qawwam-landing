@@ -40,16 +40,15 @@ function UserJotLogo({ className = "h-4 w-4" }: { className?: string }) {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { openGallery } = useGallery();
-  const { theme, toggle } = useTheme();
+  const { theme, accentColor } = useTheme();
 
   return (
-    <>
-      <header className="relative z-40 pt-8 sm:pt-12">
+    <header className="relative z-40 pt-8 sm:pt-12">
       <motion.nav
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto grid h-16 max-w-4xl grid-cols-[1fr_auto_1fr] items-center px-5 sm:h-20"
+        className="mx-auto grid h-16 max-w-5xl grid-cols-[1fr_auto_1fr] items-center px-5 sm:h-20"
       >
         <Link
           to="/"
@@ -57,15 +56,23 @@ export function Navbar() {
           className="col-start-1 flex items-center justify-self-start"
           aria-label="Qawwam home"
         >
-          <img
-            src="/icons/logo.png"
-            alt="Qawwam"
-            className="h-7 w-auto dark:hidden"
-          />
-          <img
-            src="/icons/logo-white.png"
-            alt="Qawwam"
-            className="hidden h-7 w-auto dark:block"
+          <span
+            aria-hidden="true"
+            className="inline-block h-7 w-[26.2px] transition-colors duration-200"
+            style={{
+              backgroundColor:
+                theme === "dark" && accentColor === "#2d2d2d"
+                  ? "#ffffff"
+                  : "var(--color-primary)",
+              maskImage: "url(/icons/logo.png)",
+              WebkitMaskImage: "url(/icons/logo.png)",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "center",
+              WebkitMaskPosition: "center",
+            }}
           />
         </Link>
 
@@ -155,19 +162,6 @@ export function Navbar() {
           </div>
         </div>
       )}
-      </header>
-
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-        className="fixed bottom-5 right-5 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-paper/90 text-ink backdrop-blur transition-colors hover:bg-secondary dark:border-dark-border dark:bg-dark-bg/90 dark:text-dark-ink dark:hover:bg-dark-secondary"
-      >
-        <Icon
-          name={theme === "dark" ? "sunBright" : "moonStar"}
-          className="h-4 w-4"
-        />
-      </button>
-    </>
+    </header>
   );
 }

@@ -147,7 +147,7 @@ export function ConnectionSection() {
       id="connect"
       className="scroll-mt-24 overflow-clip"
     >
-      <div className="mx-auto max-w-4xl px-5 pt-20 sm:pt-32">
+      <div className="mx-auto max-w-5xl px-5 pt-20 sm:pt-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">
             Worship is personal.
@@ -179,7 +179,7 @@ export function ConnectionSection() {
         <div
           ref={pinRef}
           style={{ top: pinOffset }}
-          className="sticky mx-auto max-w-4xl px-5"
+          className="sticky mx-auto max-w-5xl px-5"
         >
           <Reveal className="relative mt-12 sm:mt-16">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">

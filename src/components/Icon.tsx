@@ -26,6 +26,16 @@ export type IconName =
   | 'offline'
   | 'mosque'
   | 'restaurant'
+  | 'userGroup'
+  | 'khatam'
+  | 'notifications'
+  | 'share'
+  | 'prayerGuide'
+  | 'prophets'
+  | 'angels'
+  | 'tahlil'
+  | 'audio'
+  | 'handClick'
 
 const paths: Record<IconName, React.ReactNode> = {
   quran: (
@@ -136,6 +146,82 @@ const paths: Record<IconName, React.ReactNode> = {
       <path d="M4 3v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3" />
       <path d="M7 3v18" />
       <path d="M20 3v6a4 4 0 0 1-4 4v8" />
+    </>
+  ),
+  userGroup: (
+    <>
+      <circle cx="12" cy="7.5" r="3.2" />
+      <path d="M7 21v-2.5a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4V21" />
+      <path d="M5.5 10a2.7 2.7 0 1 1 2.3-3.7" />
+      <path d="M16.2 6.3a2.7 2.7 0 1 1 2.3 3.7" />
+      <path d="M2.5 19v-1a4 4 0 0 1 4-4h.5" />
+      <path d="M17 14h.5a4 4 0 0 1 4 4v1" />
+    </>
+  ),
+  khatam: (
+    <>
+      <path d="M4 6c2.2-.8 4.4-.8 6.5.5v11.5C8.4 16.7 6.2 16.7 4 17.5V6Z" />
+      <path d="M14.5 6.5C16.6 5.2 18.8 5.2 21 6v11.5c-2.2-.8-4.4-.8-6.5.5V6.5Z" />
+      <path d="M12 7v11" />
+      <path d="M8 4.5c1.4.2 2.7.9 4 2.1 1.3-1.2 2.6-1.9 4-2.1" />
+    </>
+  ),
+  notifications: (
+    <>
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+      <path d="M9.5 21h5" />
+    </>
+  ),
+  share: (
+    <>
+      <circle cx="18" cy="5" r="2.5" />
+      <circle cx="6" cy="12" r="2.5" />
+      <circle cx="18" cy="19" r="2.5" />
+      <path d="m8.3 10.8 7.4-4.3M8.3 13.2l7.4 4.3" />
+    </>
+  ),
+  prayerGuide: (
+    <>
+      <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v18H7.5A2.5 2.5 0 0 0 5 22V4.5Z" />
+      <path d="M5 19.5A2.5 2.5 0 0 1 7.5 17H20" />
+      <path d="M12 6v5l1.8-1.2L15.5 11V6" />
+    </>
+  ),
+  prophets: (
+    <>
+      <circle cx="12" cy="7.5" r="3.2" />
+      <path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2" />
+      <path d="M10.5 2.5h3" />
+    </>
+  ),
+  angels: (
+    <>
+      <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" />
+      <path d="M5 19l1-3M19 19l-1-3M12 19v-2" />
+    </>
+  ),
+  tahlil: (
+    <>
+      <path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v18H7.5A2.5 2.5 0 0 0 5 22V4.5Z" />
+      <path d="M5 19.5A2.5 2.5 0 0 1 7.5 17H20" />
+      <path d="M14 7a2 2 0 1 1-2-2" />
+    </>
+  ),
+  audio: (
+    <>
+      <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
+      <rect x="3" y="14" width="4" height="6" rx="1.5" />
+      <rect x="17" y="14" width="4" height="6" rx="1.5" />
+    </>
+  ),
+  handClick: (
+    <>
+      <path d="M14 4.5a2 2 0 0 0-4 0V11" />
+      <path d="M10 9a2 2 0 0 0-4 0v4.5" />
+      <path d="M6 13a2 2 0 0 0-4 0v2.5a8 8 0 0 0 8 8h2a8 8 0 0 0 8-8V9a2 2 0 0 0-4 0v2" />
+      <path d="M12 1.5v2" />
+      <path d="M15.5 2.5l-1.2 1.5" />
+      <path d="M8.5 2.5l1.2 1.5" />
     </>
   ),
 }

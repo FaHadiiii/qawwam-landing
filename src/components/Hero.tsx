@@ -8,7 +8,7 @@ export function Hero() {
 
   return (
     <section className="pt-14 pb-14 sm:pt-20 sm:pb-20">
-      <div className="mx-auto max-w-4xl px-5">
+      <div className="mx-auto max-w-5xl px-5">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,7 +17,7 @@ export function Hero() {
         >
           <div ref={containerRef}>
             <VariableProximity
-              label="Qawwam brings prayer times, the Qur'an and duas into one quiet place."
+              label="Qawwam brings your daily worship, Qur'an journeys, and shared faith together."
               className="text-[15px] leading-7 text-ink-soft sm:text-[17px] sm:leading-8 dark:text-dark-ink-soft"
               fromFontVariationSettings="'wght' 400"
               toFontVariationSettings="'wght' 700"

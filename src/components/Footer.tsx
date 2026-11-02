@@ -6,18 +6,22 @@ import { MadeWithLove } from "./FooterSection";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-secondary/50 dark:border-dark-border dark:bg-dark-secondary/40">
-      <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+      <div className="mx-auto max-w-5xl px-5 py-16 sm:py-20">
         <Reveal className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-14">
           <div className="md:pr-8">
-            <img
-              src="/icons/logo.png"
-              alt="Qawwam"
-              className="h-7 w-auto dark:hidden"
-            />
-            <img
-              src="/icons/logo-white.png"
-              alt="Qawwam"
-              className="hidden h-7 w-auto dark:block"
+            <span
+              aria-hidden="true"
+              className="inline-block h-7 w-[26.2px] bg-primary transition-colors duration-200"
+              style={{
+                maskImage: "url(/icons/logo.png)",
+                WebkitMaskImage: "url(/icons/logo.png)",
+                maskSize: "contain",
+                WebkitMaskSize: "contain",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
+                maskPosition: "center",
+                WebkitMaskPosition: "center",
+              }}
             />
             <p className="mt-6 max-w-xs text-sm leading-6 text-ink-soft dark:text-dark-ink-soft">
               Faith, Together. A complete Islamic companion — prayer times,
