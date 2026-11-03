@@ -27,12 +27,12 @@ export interface KhatamPublicInvite {
   }
 }
 
-export const API_BASE = (
+const API_BASE = (
   import.meta.env.VITE_API_BASE ?? 'https://qawwam-api-prod.hadiayo39.workers.dev'
 ).replace(/\/+$/, '')
 
 /** Base64url from 32 random bytes is 43 characters. */
-export const INVITE_TOKEN_RE = /^[A-Za-z0-9_-]{20,128}$/
+const INVITE_TOKEN_RE = /^[A-Za-z0-9_-]{20,128}$/
 
 export type InvitePreviewResult =
   | { kind: 'preview'; invite: KhatamPublicInvite }

@@ -11,14 +11,6 @@ import {
 } from "motion/react";
 import phoneFrame from "../assets/images/phone-frame.png";
 import thoughtBubble from "../assets/images/thought-bubble.svg";
-import leftScreen from "../assets/images/left.png";
-import rightScreen from "../assets/images/right.png";
-import leftAltScreen from "../assets/images/left-2.png";
-import rightAltScreen from "../assets/images/right-2.png";
-import leftDarkScreen from "../assets/images/left-dark.png";
-import rightDarkScreen from "../assets/images/right-dark.png";
-import leftAltDarkScreen from "../assets/images/left-2-dark.png";
-import rightAltDarkScreen from "../assets/images/right-2-dark.png";
 import { useTheme } from "../lib/theme-context";
 import { InsideQawwam } from "./InsideQawwam";
 import { LeftHand, RightHand } from "./Hands";
@@ -200,14 +192,14 @@ export function ConnectionSection() {
   const cardsInView = useInView(cardsRef, { amount: 0.35 });
   const left = useRandomScreenCycle(cardsInView, 2600);
   const right = useRandomScreenCycle(cardsInView, 4200);
-  const leftScreens =
-    theme === "dark"
-      ? [leftDarkScreen, leftAltDarkScreen]
-      : [leftScreen, leftAltScreen];
-  const rightScreens =
-    theme === "dark"
-      ? [rightDarkScreen, rightAltDarkScreen]
-      : [rightScreen, rightAltScreen];
+  const leftScreens = [
+    `/screenshot/${theme}/analytics.png`,
+    `/screenshot/${theme}/share_card.png`,
+  ];
+  const rightScreens = [
+    `/screenshot/${theme}/account_link_analytic.png`,
+    `/screenshot/${theme}/notifications.png`,
+  ];
   const turn = useRef<0 | 1>(0);
   const messageIndex = useRef(0);
   const [bubble, setBubble] = useState<{
@@ -446,6 +438,12 @@ export function ConnectionSection() {
             {filled && <InsideQawwam />}
           </motion.div>
         </div>
+
+        <div
+          id="showcase"
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 h-px w-px"
+        />
       </div>
     </section>
   );

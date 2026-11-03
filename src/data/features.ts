@@ -167,10 +167,3 @@ export const FEATURES: Feature[] = [
     icon: "audio",
   },
 ];
-
-export const FEATURE_STATS = [
-  { value: "114", label: "Surahs" },
-  { value: "5", label: "Daily prayers" },
-  { value: "99", label: "Names of Allah" },
-  { value: "3", label: "Languages" },
-];

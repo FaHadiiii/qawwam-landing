@@ -2,13 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Icon } from "./Icon";
-import { useGallery } from "../lib/gallery-context";
 import { useTheme } from "../lib/theme-context";
 
 const NAV_LINKS = [
   { href: "/#features", label: "Features" },
   { href: "/#connect", label: "Together" },
-  { label: "Gallery" },
+  { href: "/#showcase", label: "Showcase" },
   { href: "/#faq", label: "FAQ" },
 ] as const;
 
@@ -39,7 +38,6 @@ function UserJotLogo({ className = "h-4 w-4" }: { className?: string }) {
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const { openGallery } = useGallery();
   const { theme, accentColor } = useTheme();
 
   return (
@@ -77,26 +75,15 @@ export function Navbar() {
         </Link>
 
         <div className="col-start-2 hidden items-center gap-8 justify-self-center md:flex">
-          {NAV_LINKS.map((link) =>
-            "href" in link ? (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-[13px] font-medium text-ink-soft transition-colors hover:text-ink dark:text-dark-ink-soft dark:hover:text-dark-ink"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <button
-                key={link.label}
-                type="button"
-                onClick={() => openGallery()}
-                className="text-[13px] font-medium text-ink-soft transition-colors hover:text-ink dark:text-dark-ink-soft dark:hover:text-dark-ink"
-              >
-                {link.label}
-              </button>
-            ),
-          )}
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.label}
+              to={link.href}
+              className="text-[13px] font-medium text-ink-soft transition-colors hover:text-ink dark:text-dark-ink-soft dark:hover:text-dark-ink"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         <div className="col-start-3 flex items-center justify-self-end">
@@ -125,30 +112,16 @@ export function Navbar() {
       {open && (
         <div className="absolute inset-x-0 top-full z-50 border-y border-border bg-paper py-2 md:hidden dark:border-dark-border dark:bg-dark-bg">
           <div className="flex flex-col">
-            {NAV_LINKS.map((link) =>
-              "href" in link ? (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  onClick={() => setOpen(false)}
-                  className="border-b border-border px-5 py-3.5 text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <button
-                  key={link.label}
-                  type="button"
-                  onClick={() => {
-                    setOpen(false);
-                    openGallery();
-                  }}
-                  className="border-b border-border px-5 py-3.5 text-left text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
-                >
-                  {link.label}
-                </button>
-              ),
-            )}
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-border px-5 py-3.5 text-sm text-ink-soft dark:border-dark-border dark:text-dark-ink-soft"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href={FEEDBACK_URL}
               target="_blank"

@@ -114,5 +114,3 @@ export const SURAH_NAMES = [
   "Al Falaq",
   "An Naas",
 ] as const;
-
-export const TOTAL_SURAHS = SURAH_NAMES.length;

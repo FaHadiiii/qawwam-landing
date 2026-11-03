@@ -10,6 +10,18 @@
     // one feeds the browser bundle.
     "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
   },
+  // Protect the public prayer proxy from being used to exhaust the upstream
+  // API bearer token. Limits are approximate per Cloudflare location.
+  "ratelimits": [
+    {
+      "name": "PRAYER_RATE_LIMITER",
+      "namespace_id": "2001",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    }
+  ],
   "env": {
     "preview": {
       "vars": {

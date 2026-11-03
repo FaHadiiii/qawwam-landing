@@ -6,11 +6,15 @@ const SCREENS = [
   { name: "home", label: "Home" },
   { name: "prayer_guide", label: "Prayer guide" },
   { name: "quran_2", label: "Qur'an reader" },
+  { name: "quran_audio", label: "Qur'an audio" },
   { name: "dua", label: "Duas & dhikr" },
   { name: "tasbih", label: "Tasbih" },
   { name: "qiblat", label: "Qiblat" },
+  { name: "khatam", label: "Khatam" },
   { name: "analytics", label: "Analytics" },
   { name: "account_link", label: "Linked accounts" },
+  { name: "share_card", label: "Share card" },
+  { name: "notifications", label: "Notifications" },
   { name: "quran_1", label: "Qur'an" },
 ] as const;
 

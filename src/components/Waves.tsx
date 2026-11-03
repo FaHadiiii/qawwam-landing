@@ -259,7 +259,7 @@ export interface WavesProps extends HTMLAttributes<HTMLDivElement> {
   style?: CSSProperties;
 }
 
-export function Waves({
+function Waves({
   lineColor = '#ffffff',
   accentColor,
   backgroundColor = 'transparent',

@@ -2,6 +2,7 @@ import { apiBase, type Env } from "./api";
 
 export interface PrayerEnv extends Env {
   API_TOKEN?: string;
+  PRAYER_RATE_LIMITER?: RateLimit;
 }
 
 type PrayerContext = Parameters<PagesFunction<PrayerEnv>>[0];
@@ -18,6 +19,30 @@ export async function forwardPrayer(
   path: string,
   cacheSeconds: number,
 ): Promise<Response> {
+  const rateLimiter = context.env.PRAYER_RATE_LIMITER;
+  if (rateLimiter) {
+    const clientKey =
+      context.request.headers.get("CF-Connecting-IP") ?? "unknown";
+    const { success } = await rateLimiter.limit({ key: clientKey });
+    if (!success) {
+      return new Response(
+        JSON.stringify({
+          status: "error",
+          code: "RATE_LIMITED",
+          message: "Too many requests",
+        }),
+        {
+          status: 429,
+          headers: {
+            "Content-Type": "application/json",
+            "Cache-Control": "no-store",
+            "Retry-After": "60",
+          },
+        },
+      );
+    }
+  }
+
   const token = context.env.API_TOKEN;
   if (!token) {
     return new Response(
