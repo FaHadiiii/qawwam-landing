@@ -6,11 +6,6 @@ const meta = disclosures.acknowledgement
 
 export function AcknowledgementPage() {
   return (
-    <DisclosurePage
-      title={meta.title}
-      content={acknowledgementContent}
-      updatedAt={meta.updatedAt}
-      version={meta.version}
-    />
+    <DisclosurePage title={meta.title} content={acknowledgementContent} />
   )
 }

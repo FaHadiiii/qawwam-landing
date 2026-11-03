@@ -6,8 +6,6 @@ export function AccountDeletionPage() {
     <DisclosurePage
       title="Account Deletion"
       content={accountDeletionContent}
-      updatedAt="2026-08-16"
-      version="1.0.0"
     />
   )
 }

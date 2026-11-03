@@ -8,13 +8,16 @@ const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.qawwam.app'
 const SITE_TITLE = 'Qawwam — Faith, Together'
 
 const BADGE =
-  'inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-primary'
+  'text-[13px] font-medium text-ink-mute dark:text-dark-ink-mute'
 const PRIMARY_BUTTON =
-  'mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-[0_2px_10px_rgba(41,101,228,0.35)] transition hover:bg-primary/90 sm:w-auto'
+  'mt-8 inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-primary/90 sm:w-auto'
 const NOTE_CARD =
-  'mt-3 rounded-2xl border border-border bg-surface px-5 py-3 text-sm text-ink-soft dark:border-dark-border dark:bg-dark-surface dark:text-dark-ink-soft'
-const FOOTNOTE = 'mt-6 text-xs text-ink-soft dark:text-dark-ink-soft'
-const SKELETON = 'rounded-lg bg-secondary dark:bg-dark-secondary'
+  'mt-4 bg-secondary/60 px-5 py-4 text-[13px] leading-6 text-ink-soft dark:bg-dark-secondary/60 dark:text-dark-ink-soft'
+const FOOTNOTE = 'mt-6 text-[12px] text-ink-mute dark:text-dark-ink-mute'
+const SKELETON = 'bg-secondary dark:bg-dark-secondary'
+const HEADING =
+  'mt-6 text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em] text-ink dark:text-dark-ink'
+const BODY = 'mt-4 text-[15px] leading-7 text-ink-soft dark:text-dark-ink-soft'
 
 type LoadState =
   | { kind: 'loading' }
@@ -53,7 +56,7 @@ function stateNote(invite: KhatamPublicInvite): string | null {
 function Loading() {
   return (
     <div className="animate-pulse" aria-hidden="true">
-      <div className={`mx-auto h-6 w-32 rounded-full ${SKELETON}`} />
+      <div className={`mx-auto h-5 w-28 ${SKELETON}`} />
       <div className={`mx-auto mt-6 h-9 w-72 ${SKELETON}`} />
       <div className={`mx-auto mt-3 h-8 w-56 ${SKELETON}`} />
       <div className={`mx-auto mt-5 h-4 w-64 ${SKELETON}`} />
@@ -88,28 +91,30 @@ function Ready({
         <img
           src={owner.avatarUrl}
           alt=""
-          className="mx-auto mt-6 h-14 w-14 rounded-full object-cover ring-2 ring-border dark:ring-dark-border"
+          className="mx-auto mt-6 h-14 w-14 rounded-full object-cover"
           onError={(event) => {
             event.currentTarget.style.display = 'none'
           }}
         />
       )}
 
-      <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <h1 className={HEADING}>
         {ownerName
           ? `${ownerName} invited you to read`
           : "You've been invited to read together"}
       </h1>
 
-      <p className="mt-3 break-words text-2xl font-bold text-primary sm:text-3xl">
+      <p className="mt-3 break-words font-caveat text-[clamp(2rem,4vw,2.75rem)] leading-[1.1] text-primary">
         “{journey.name}”
       </p>
 
-      <p className="mt-4 text-sm leading-6 text-ink-soft dark:text-dark-ink-soft">{meta}</p>
+      <p className="mt-4 text-[13px] leading-6 text-ink-soft dark:text-dark-ink-soft">
+        {meta}
+      </p>
 
       {note && <p className={NOTE_CARD}>{note}</p>}
 
-      <p className="mt-6 text-base leading-7 text-ink-soft dark:text-dark-ink-soft">
+      <p className={BODY}>
         Open this invitation in Qawwam to preview the journey and join.
       </p>
 
@@ -124,7 +129,7 @@ function Ready({
       </div>
 
       <p className={FOOTNOTE}>Keep this link private — anyone with it can request to join.</p>
-      <Link to="/" className="mt-8 inline-block text-sm font-semibold text-primary hover:underline">
+      <Link to="/" className="mt-8 inline-block text-[13px] font-medium text-ink-soft transition-colors hover:text-ink dark:text-dark-ink-soft dark:hover:text-dark-ink">
         Back to qawwam.app
       </Link>
     </>
@@ -135,16 +140,14 @@ function Invalid() {
   return (
     <>
       <span className={BADGE}>Group Khatam</span>
-      <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
-        This invite link is no longer valid
-      </h1>
-      <p className="mt-4 text-base leading-7 text-ink-soft dark:text-dark-ink-soft">
+      <h1 className={HEADING}>This invite link is no longer valid</h1>
+      <p className={BODY}>
         It may have been replaced by a newer link. Ask the organiser for a fresh one.
       </p>
       <div className="mt-8 flex justify-center">
         <StoreBadges />
       </div>
-      <Link to="/" className="mt-8 inline-block text-sm font-semibold text-primary hover:underline">
+      <Link to="/" className="mt-8 inline-block text-[13px] font-medium text-ink-soft transition-colors hover:text-ink dark:text-dark-ink-soft dark:hover:text-dark-ink">
         Back to qawwam.app
       </Link>
     </>
@@ -155,12 +158,8 @@ function Failed({ onRetry }: { onRetry: () => void }) {
   return (
     <>
       <span className={BADGE}>Group Khatam</span>
-      <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">
-        We couldn't load this invitation
-      </h1>
-      <p className="mt-4 text-base leading-7 text-ink-soft dark:text-dark-ink-soft">
-        Check your connection and try again.
-      </p>
+      <h1 className={HEADING}>We couldn't load this invitation</h1>
+      <p className={BODY}>Check your connection and try again.</p>
       <button type="button" onClick={onRetry} className={PRIMARY_BUTTON}>
         Try again
       </button>

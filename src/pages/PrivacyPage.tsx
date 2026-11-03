@@ -6,11 +6,6 @@ const meta = disclosures['privacy-policy']
 
 export function PrivacyPage() {
   return (
-    <DisclosurePage
-      title={meta.title}
-      content={privacyContent}
-      updatedAt={meta.updatedAt}
-      version={meta.version}
-    />
+    <DisclosurePage title={meta.title} content={privacyContent} />
   )
 }

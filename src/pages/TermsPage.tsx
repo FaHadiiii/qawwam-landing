@@ -6,11 +6,6 @@ const meta = disclosures['terms-of-use']
 
 export function TermsPage() {
   return (
-    <DisclosurePage
-      title={meta.title}
-      content={termsContent}
-      updatedAt={meta.updatedAt}
-      version={meta.version}
-    />
+    <DisclosurePage title={meta.title} content={termsContent} />
   )
 }

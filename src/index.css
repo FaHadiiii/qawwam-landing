@@ -124,6 +124,7 @@
 
 html {
   scroll-behavior: smooth;
+  touch-action: pan-x pan-y;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -156,23 +157,21 @@ h4 {
 
 /* Markdown article typography (disclosure pages) */
 .prose-qawwam h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 .prose-qawwam h2 {
   font-size: 1.35rem;
   line-height: 1.3;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  margin: 2rem 0 0.75rem;
+  font-weight: 500;
+  margin: 2.25rem 0 0.75rem;
 }
 .prose-qawwam h3 {
   font-size: 1.1rem;
-  font-weight: 700;
-  margin: 1.5rem 0 0.5rem;
+  font-weight: 500;
+  margin: 1.75rem 0 0.5rem;
 }
 .prose-qawwam p {
   margin: 0.75rem 0;
@@ -203,10 +202,54 @@ h4 {
 }
 .prose-qawwam strong {
   color: var(--color-ink);
-  font-weight: 700;
+  font-weight: 500;
 }
 .dark .prose-qawwam strong {
   color: var(--color-dark-ink);
+}
+.prose-qawwam blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-primary);
+  color: var(--color-ink-soft);
+}
+.dark .prose-qawwam blockquote {
+  color: var(--color-dark-ink-soft);
+}
+.prose-qawwam code {
+  font-size: 0.9em;
+}
+.prose-qawwam table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+.prose-qawwam th,
+.prose-qawwam td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+.prose-qawwam th {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+.dark .prose-qawwam th,
+.dark .prose-qawwam td {
+  border-bottom-color: var(--color-dark-border);
+}
+.dark .prose-qawwam th {
+  color: var(--color-dark-ink);
+}
+.prose-qawwam hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+.dark .prose-qawwam hr {
+  border-top-color: var(--color-dark-border);
 }
 
 @media (prefers-reduced-motion: reduce) {

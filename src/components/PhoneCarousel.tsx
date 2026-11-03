@@ -8,13 +8,21 @@ export interface ImageItem {
   alt: string;
 }
 
-function PhoneMockup({ image }: { image: ImageItem }) {
+function PhoneMockup({
+  image,
+  priority = false,
+}: {
+  image: ImageItem;
+  priority?: boolean;
+}) {
   return (
     <div className="relative w-full">
       <div className="absolute left-[8.5%] top-[4.3%] h-[91.4%] w-[82.9%] overflow-hidden rounded-[1.1rem]">
         <img
           src={image.src}
           alt={image.alt}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
           draggable={false}
           className="h-full w-full object-cover object-top select-none"
         />
@@ -169,7 +177,7 @@ export function PhoneCarousel({
                   : ""
               }`}
             >
-              <PhoneMockup image={image} />
+              <PhoneMockup image={image} priority={isCenter} />
             </motion.div>
           );
         })}
