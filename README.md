@@ -63,6 +63,24 @@ Otherwise it reads the production API. Note `VITE_API_BASE` is baked in at build
 time and only affects the browser bundle; the Pages Functions use the `API_BASE`
 binding instead.
 
+### Prayer times card
+
+The first feature card reads the protected `/prayer/*` API through
+`functions/api/prayer/{zones,times}.ts`. The browser cannot hold the bearer
+token, so the Pages Functions add it from `API_TOKEN`.
+
+For `npm run dev:pages`, put the same token the local API uses in `.dev.vars`
+(gitignored):
+
+```txt
+API_TOKEN=...
+```
+
+`npm run dev` (Vite only) proxies `/api/prayer/*` to the dev API with that token.
+Set `PRAYER_API_BASE` to point it at another API, e.g.
+`PRAYER_API_BASE=http://localhost:8787 npm run dev`. Without a token the card
+reports its times as unavailable.
+
 ## Deploying
 
 - `npm run deploy:dev` — preview at `https://dev.qawwam-landing.pages.dev`
@@ -73,6 +91,10 @@ binding instead.
 `.env.production` feeds the browser bundle — that file is loaded by every
 `vite build`, including the Git-triggered Pages build. They are separate and must
 match.
+
+Set `API_TOKEN` as a Pages secret for preview and production (preview uses the
+dev API token, production the prod API token). It is a secret, not a `vars`
+entry; the prayer card reports unavailable without it.
 
 Production reads invites from the prod API, because that is where the store build
 mints them; preview deployments keep using the dev API. Both API environments

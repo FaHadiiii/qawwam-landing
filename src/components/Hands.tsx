@@ -2,12 +2,7 @@ import type { SVGProps } from "react";
 
 export function LeftHand(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg
-      viewBox="0 0 109 117"
-      fill="none"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg viewBox="0 0 109 117" fill="none" aria-hidden="true" {...props}>
       <g
         stroke="currentColor"
         strokeWidth="6"

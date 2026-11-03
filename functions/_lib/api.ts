@@ -25,6 +25,8 @@ export interface PublicInvite {
 export interface Env {
   /** Overridable so local dev can point at http://localhost:8787. */
   API_BASE?: string
+  /** Static bearer token for the protected /prayer/* API. */
+  API_TOKEN?: string
 }
 
 const DEFAULT_API_BASE = 'https://qawwam-api-prod.hadiayo39.workers.dev'

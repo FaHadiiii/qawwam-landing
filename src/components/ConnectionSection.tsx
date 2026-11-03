@@ -1,14 +1,28 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
+  AnimatePresence,
   motion,
+  useInView,
   useMotionValue,
   useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
 } from "motion/react";
-import { Icon } from "./Icon";
+import phoneFrame from "../assets/images/phone-frame.png";
+import thoughtBubble from "../assets/images/thought-bubble.svg";
+import leftScreen from "../assets/images/left.png";
+import rightScreen from "../assets/images/right.png";
+import leftAltScreen from "../assets/images/left-2.png";
+import rightAltScreen from "../assets/images/right-2.png";
+import leftDarkScreen from "../assets/images/left-dark.png";
+import rightDarkScreen from "../assets/images/right-dark.png";
+import leftAltDarkScreen from "../assets/images/left-2-dark.png";
+import rightAltDarkScreen from "../assets/images/right-2-dark.png";
+import { useTheme } from "../lib/theme-context";
+import { InsideQawwam } from "./InsideQawwam";
 import { LeftHand, RightHand } from "./Hands";
+import { Icon } from "./Icon";
 import { Reveal } from "./Reveal";
 import VariableProximity from "./VariableProximity";
 
@@ -18,6 +32,17 @@ const STEPS = [
   { icon: "love", title: "Grow" },
 ] as const;
 
+const MESSAGES = [
+  "Fajr prayed",
+  "Qur'an · Al-Mulk",
+  "Khatam 12 / 30",
+  "Tasbih 100",
+  "Surah Al-Kahf",
+  "Du'a shared",
+  "Prayer streak 7",
+  "Poked you",
+] as const;
+
 function preSnapScale(value: number, start: number, snap: number) {
   const span = snap - start;
   if (span <= 0) return 1;
@@ -25,14 +50,141 @@ function preSnapScale(value: number, start: number, snap: number) {
   return 1 + progress * 17;
 }
 
-function Device({ name, alt }: { name: string; alt: string }) {
+function useRandomScreenCycle(active: boolean, initialDelay: number) {
+  const [screen, setScreen] = useState<0 | 1>(0);
+  const [title, setTitle] = useState<0 | 1>(0);
+  const current = useRef<0 | 1>(0);
+
+  useEffect(() => {
+    if (!active) return;
+
+    let cancelled = false;
+    const timers: number[] = [];
+    const queue = (fn: () => void, delay: number) => {
+      const id = window.setTimeout(() => {
+        if (!cancelled) fn();
+      }, delay);
+      timers.push(id);
+    };
+
+    const cycle = () => {
+      current.current = current.current === 0 ? 1 : 0;
+      const nextScreen = current.current;
+
+      setScreen(nextScreen);
+      queue(() => setTitle(nextScreen), 450 + Math.random() * 900);
+      queue(cycle, 3600 + Math.random() * 2800);
+    };
+
+    queue(cycle, initialDelay);
+
+    return () => {
+      cancelled = true;
+      timers.forEach((id) => window.clearTimeout(id));
+    };
+  }, [active, initialDelay]);
+
+  return { screen, title };
+}
+
+function ThoughtCard({
+  lineOne,
+  lineTwo,
+  bubble,
+  screen,
+  mirror = false,
+  isPartner = false,
+}: {
+  lineOne: string;
+  lineTwo: string;
+  bubble: string | null;
+  screen: string;
+  mirror?: boolean;
+  isPartner?: boolean;
+}) {
   return (
-    <div className="mx-auto w-[clamp(120px,20vw,240px)] rounded-[2rem] border border-white/25 bg-[#111] p-2 shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-      <img
-        src={`/screenshot/dark/${name}.png`}
-        alt={alt}
-        className="aspect-[1320/2868] w-full rounded-[1.5rem] object-cover"
-      />
+    <div
+      className={`relative aspect-[3/4] w-full overflow-hidden shadow-[0_1px_4px_rgba(23,22,15,0.08)] [container-type:inline-size] dark:shadow-[0_1px_4px_rgba(0,0,0,0.4)] ${
+        isPartner
+          ? "bg-[#F9F8F6] dark:bg-dark-secondary"
+          : "bg-white dark:bg-dark-surface"
+      }`}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.p
+          key={lineOne}
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="px-8 pt-[15%] text-center text-[clamp(1.4rem,6.5cqw,1.9rem)] font-medium leading-[1.25] tracking-[-0.03em]"
+        >
+          {lineOne}
+          <br />
+          <span className="text-ink-soft dark:text-dark-ink-soft">
+            {lineTwo}
+          </span>
+        </motion.p>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {bubble && (
+          <motion.div
+            key={bubble}
+            initial={{ opacity: 0, scale: 0.8, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 4 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className={`absolute top-[28%] w-[32%] ${
+              mirror ? "right-2" : "left-2"
+            }`}
+          >
+            <span className={`block w-full ${mirror ? "-scale-x-100" : ""}`}>
+              <img
+                src={thoughtBubble}
+                alt=""
+                aria-hidden="true"
+                className="w-full dark:invert"
+              />
+            </span>
+            <span className="absolute inset-x-[8%] top-[3%] bottom-[27%] flex items-center justify-center px-2">
+              <span className="text-center font-caveat text-[clamp(14px,4.6cqw,18px)] font-medium leading-[1.05] text-ink dark:text-dark-ink">
+                {bubble}
+              </span>
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="absolute left-1/2 top-[46%] w-[58%] -translate-x-1/2">
+        <motion.div
+          initial={{ opacity: 0, y: 48, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+            delay: isPartner ? 0.12 : 0,
+          }}
+          className="relative"
+        >
+          <div className="absolute left-[8.5%] top-[4.3%] h-[91.4%] w-[82.9%] overflow-hidden rounded-[1rem]">
+            <AnimatePresence initial={false}>
+              <motion.img
+                key={screen}
+                src={screen}
+                alt=""
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </AnimatePresence>
+          </div>
+          <img src={phoneFrame} alt="" className="relative z-10 w-full" />
+        </motion.div>
+      </div>
     </div>
   );
 }
@@ -42,6 +194,60 @@ export function ConnectionSection() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const pinRef = useRef<HTMLDivElement | null>(null);
   const stepsRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
+  const { theme } = useTheme();
+  const cardsInView = useInView(cardsRef, { amount: 0.35 });
+  const left = useRandomScreenCycle(cardsInView, 2600);
+  const right = useRandomScreenCycle(cardsInView, 4200);
+  const leftScreens =
+    theme === "dark"
+      ? [leftDarkScreen, leftAltDarkScreen]
+      : [leftScreen, leftAltScreen];
+  const rightScreens =
+    theme === "dark"
+      ? [rightDarkScreen, rightAltDarkScreen]
+      : [rightScreen, rightAltScreen];
+  const turn = useRef<0 | 1>(0);
+  const messageIndex = useRef(0);
+  const [bubble, setBubble] = useState<{
+    side: "left" | "right";
+    text: string;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!cardsInView) return;
+
+    let cancelled = false;
+    const timers: number[] = [];
+    const queue = (fn: () => void, delay: number) => {
+      const id = window.setTimeout(() => {
+        if (!cancelled) fn();
+      }, delay);
+      timers.push(id);
+    };
+
+    const show = () => {
+      const side = turn.current === 0 ? "left" : "right";
+      const text = MESSAGES[messageIndex.current % MESSAGES.length];
+
+      messageIndex.current += 1;
+      turn.current = turn.current === 0 ? 1 : 0;
+      setBubble({ side, text });
+      queue(() => {
+        setBubble(null);
+        queue(show, 500);
+      }, 2400);
+    };
+
+    queue(show, 1200);
+
+    return () => {
+      cancelled = true;
+      timers.forEach((id) => window.clearTimeout(id));
+      setBubble(null);
+    };
+  }, [cardsInView]);
 
   const [pinOffset, setPinOffset] = useState(0);
   const [expansionStart, setExpansionStart] = useState(0);
@@ -117,36 +323,8 @@ export function ConnectionSection() {
     );
   }, [scrollYProgress, expansionStart, snapPoint, targetScale]);
 
-  const titleOpacity = useTransform(
-    scrollYProgress,
-    [snapPoint + 0.02, snapPoint + 0.05],
-    [0, 1],
-  );
-  const titleY = useTransform(
-    scrollYProgress,
-    [snapPoint + 0.02, snapPoint + 0.05],
-    [16, 0],
-  );
-
-  const slideOneOpacity = useTransform(
-    scrollYProgress,
-    [snapPoint + 0.03, snapPoint + 0.09, 0.5, 0.56],
-    [0, 1, 1, 0],
-  );
-  const slideOneX = useTransform(scrollYProgress, [0.5, 0.56], [0, 80]);
-
-  const slideTwoOpacity = useTransform(
-    scrollYProgress,
-    [0.55, 0.62],
-    [0, 1],
-  );
-  const slideTwoX = useTransform(scrollYProgress, [0.55, 0.62], [-80, 0]);
-
   return (
-    <section
-      id="connect"
-      className="scroll-mt-24 overflow-clip"
-    >
+    <section id="connect" className="scroll-mt-24 overflow-clip">
       <div className="mx-auto max-w-5xl px-5 pt-20 sm:pt-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.15] tracking-[-0.03em]">
@@ -182,14 +360,29 @@ export function ConnectionSection() {
           className="sticky mx-auto max-w-5xl px-5"
         >
           <Reveal className="relative mt-12 sm:mt-16">
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-              <div
-                aria-hidden
-                className="aspect-[4/5] bg-[#ececeb] dark:bg-dark-secondary"
+            <div
+              ref={cardsRef}
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4"
+            >
+              <ThoughtCard
+                lineOne={left.title === 0 ? "A quick look at" : "A verse worth"}
+                lineTwo={left.title === 0 ? "your own progress." : "sharing."}
+                bubble={bubble?.side === "left" ? bubble.text : null}
+                screen={leftScreens[left.screen]}
               />
-              <div
-                aria-hidden
-                className="aspect-[4/5] bg-[#ececeb] dark:bg-dark-secondary"
+              <ThoughtCard
+                lineOne={
+                  right.title === 0 ? "A shared glance" : "A gentle nudge"
+                }
+                lineTwo={
+                  right.title === 0
+                    ? "of your partner's."
+                    : "from your partner."
+                }
+                bubble={bubble?.side === "right" ? bubble.text : null}
+                screen={rightScreens[right.screen]}
+                mirror
+                isPartner
               />
             </div>
 
@@ -214,6 +407,7 @@ export function ConnectionSection() {
                 <RightHand className="h-14 w-auto sm:h-20" />
               </motion.span>
             </div>
+
           </Reveal>
 
           <motion.div
@@ -247,55 +441,9 @@ export function ConnectionSection() {
             initial={false}
             animate={{ opacity: filled ? 1 : 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-none absolute inset-0"
+            className={`absolute inset-0 ${filled ? "pointer-events-auto" : "pointer-events-none"}`}
           >
-            <motion.div
-              style={{ opacity: titleOpacity, y: titleY }}
-              className="absolute inset-x-0 top-[12vh] text-center text-white"
-            >
-              <p className="text-[11px] font-medium tracking-[0.24em] text-white/55">
-                Inside Qawwam
-              </p>
-              <h2 className="mt-3 text-[clamp(1.5rem,3vw,2.5rem)] font-medium tracking-[-0.03em]">
-                Everything, in one quiet place.
-              </h2>
-            </motion.div>
-
-            <motion.div
-              style={{ opacity: slideOneOpacity, x: slideOneX }}
-              className="absolute inset-0 flex items-center justify-center px-6 pt-24"
-            >
-              <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-16">
-                <Device name="home" alt="Qawwam prayer times screen" />
-                <div className="text-white">
-                  <h3 className="text-[clamp(1.4rem,2.4vw,2.25rem)] leading-tight tracking-[-0.03em]">
-                    Prayer, on time.
-                  </h3>
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-white/70">
-                    Accurate prayer times from official authorities, with a
-                    live countdown that keeps your day in rhythm.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              style={{ opacity: slideTwoOpacity, x: slideTwoX }}
-              className="absolute inset-0 flex items-center justify-center px-6 pt-24"
-            >
-              <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-8 sm:grid-cols-2 sm:gap-16">
-                <div className="text-white">
-                  <h3 className="text-[clamp(1.4rem,2.4vw,2.25rem)] leading-tight tracking-[-0.03em]">
-                    The Qur'an, close.
-                  </h3>
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-white/70">
-                    Read, listen and reflect — with tajweed colouring,
-                    translations and recitation in one place.
-                  </p>
-                </div>
-                <Device name="quran_2" alt="Qawwam Qur'an reader screen" />
-              </div>
-            </motion.div>
+            {filled && <InsideQawwam />}
           </motion.div>
         </div>
       </div>
