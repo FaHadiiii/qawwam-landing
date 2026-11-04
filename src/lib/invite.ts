@@ -27,9 +27,13 @@ export interface KhatamPublicInvite {
   }
 }
 
-const API_BASE = (
-  import.meta.env.VITE_API_BASE ?? 'https://qawwam-api-prod.hadiayo39.workers.dev'
-).replace(/\/+$/, '')
+/**
+ * Served by `functions/api/khatam-invite/[token].ts`, same-origin.
+ *
+ * The site's CSP keeps `connect-src 'self'`, so the browser cannot reach the API
+ * directly; the Function forwards the request and passes the status back.
+ */
+const INVITE_PATH = '/api/khatam-invite'
 
 /** Base64url from 32 random bytes is 43 characters. */
 const INVITE_TOKEN_RE = /^[A-Za-z0-9_-]{20,128}$/
@@ -51,7 +55,7 @@ export async function fetchInvitePreview(
 ): Promise<InvitePreviewResult> {
   if (!INVITE_TOKEN_RE.test(token)) return { kind: 'invalid' }
 
-  const res = await fetch(`${API_BASE}/khatam-invite/${encodeURIComponent(token)}`, {
+  const res = await fetch(`${INVITE_PATH}/${encodeURIComponent(token)}`, {
     headers: { Accept: 'application/json' },
     signal,
   })

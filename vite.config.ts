@@ -25,20 +25,30 @@ function devApiToken(): string | undefined {
 const prayerApiBase =
   process.env.PRAYER_API_BASE ??
   'https://qawwam-api.hadiayo39.workers.dev'
+const inviteApiBase =
+  process.env.API_BASE ?? 'https://qawwam-api-prod.hadiayo39.workers.dev'
 const token = devApiToken()
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: token
-    ? {
-        proxy: {
-          '/api/prayer': {
-            target: prayerApiBase,
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api\/prayer/, '/prayer'),
-            headers: { Authorization: `Bearer ${token}` },
-          },
+  server: {
+    proxy: {
+      // The invite page is same-origin in production, so mirror that here:
+      // Functions/api/khatam-invite/[token].ts does this behind Pages.
+      '/api/khatam-invite': {
+        target: inviteApiBase,
+        changeOrigin: true,
+        rewrite: (path) =>
+          path.replace(/^\/api\/khatam-invite/, '/khatam-invite'),
+      },
+      ...(token && {
+        '/api/prayer': {
+          target: prayerApiBase,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/prayer/, '/prayer'),
+          headers: { Authorization: `Bearer ${token}` },
         },
-      }
-    : undefined,
+      }),
+    },
+  },
 })

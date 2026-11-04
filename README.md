@@ -53,15 +53,16 @@ Both functions read the invite from the API's public
 read it from `wrangler.jsonc`: `env.preview` uses the dev API, production uses
 the prod API.
 
-For the browser page under `npm run dev`, create `.env.local`:
+The browser page reads the invite through `/api/khatam-invite/:token`, served by
+`functions/api/khatam-invite/[token].ts`. It is same-origin on purpose: the CSP in
+`public/_headers` keeps `connect-src 'self'`, so a cross-origin call is refused
+before it leaves the browser. The Function passes the upstream status through
+unchanged, so a rotated link still reads as invalid rather than as a failure.
 
-```txt
-VITE_API_BASE=http://localhost:8787
-```
-
-Otherwise it reads the production API. Note `VITE_API_BASE` is baked in at build
-time and only affects the browser bundle; the Pages Functions use the `API_BASE`
-binding instead.
+`npm run dev` mirrors that with a Vite proxy. Point it at a local API with
+`API_BASE=http://localhost:8787 npm run dev`; otherwise it reads the production
+API. The proxy target and the Functions' `API_BASE` binding are the only places
+the API origin is configured — nothing about it is baked into the bundle.
 
 ### Prayer times card
 
@@ -87,10 +88,9 @@ reports its times as unavailable.
   (`--branch=dev`); `qawwam.app` is untouched.
 - `npm run deploy` — production, publishes `qawwam.app`.
 
-`API_BASE` in `wrangler.jsonc` feeds the Pages Functions; `VITE_API_BASE` in
-`.env.production` feeds the browser bundle — that file is loaded by every
-`vite build`, including the Git-triggered Pages build. They are separate and must
-match.
+`API_BASE` in `wrangler.jsonc` feeds the Pages Functions, which is now the only
+place the API origin is configured: the browser reads the invite same-origin
+through `/api/khatam-invite/*`, so no API host is baked into the build.
 
 Set `API_TOKEN` as a Pages secret for preview and production (preview uses the
 dev API token, production the prod API token). It is a secret, not a `vars`

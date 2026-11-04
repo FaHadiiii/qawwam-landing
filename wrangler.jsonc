@@ -5,9 +5,9 @@
   "compatibility_date": "2026-08-15",
   "vars": {
     // Invite tokens are minted by the store app against the PROD api, so the
-    // Pages Functions must look them up there too. Keep this in step with
-    // VITE_API_BASE in `.env.production`: this one feeds the Functions, that
-    // one feeds the browser bundle.
+    // Pages Functions must look them up there too. This is the only place the
+    // API origin is configured: the browser reads the invite same-origin
+    // through `/api/khatam-invite/*`.
     "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
   },
   // Protect the public prayer proxy from being used to exhaust the upstream
