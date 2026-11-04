@@ -36,7 +36,7 @@ export function InsideQawwam() {
       >
         <h2
           style={{ color: "#ffffff" }}
-          className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-[1.15] tracking-[-0.03em] text-white"
+          className="text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-[1.15] tracking-[-0.03em] text-white mt-6 sm:mt-0"
         >
           Everything you need
           <br />

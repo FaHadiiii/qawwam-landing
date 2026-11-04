@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import phoneFrame from "../assets/images/phone-frame.png";
 import { Icon } from "./Icon";
@@ -50,7 +50,7 @@ function CarouselControls({
   onNext: () => void;
 }) {
   return (
-    <div className="flex items-center gap-2.5 sm:gap-3">
+    <div className="flex items-center gap-2.5 sm:gap-3 mb-8 sm:mb-0">
       <button
         type="button"
         onClick={onPrevious}
@@ -107,6 +107,8 @@ export function PhoneCarousel({
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [phoneWidth, setPhoneWidth] = useState(0);
+  const stageRef = useRef<HTMLDivElement>(null);
   const count = images.length;
 
   useEffect(() => {
@@ -117,6 +119,28 @@ export function PhoneCarousel({
   }, []);
 
   useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const update = () => {
+      const { width, height } = stage.getBoundingClientRect();
+      const byWidth = Math.min(width * 0.78, 400);
+      const byHeight = height * (1419 / 2796);
+      setPhoneWidth(
+        Math.max(
+          isMobile ? 120 : 230,
+          isMobile ? Math.min(byWidth, byHeight) : byWidth,
+        ),
+      );
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  useEffect(() => {
     if (paused || count < 2) return;
     const id = window.setInterval(() => {
       setActive((current) => (current + 1) % count);
@@ -124,77 +148,86 @@ export function PhoneCarousel({
     return () => window.clearInterval(id);
   }, [active, count, interval, paused]);
 
-  const previous = () =>
-    setActive((current) => (current - 1 + count) % count);
+  const previous = () => setActive((current) => (current - 1 + count) % count);
   const next = () => setActive((current) => (current + 1) % count);
 
   const offsetFor = (index: number) => {
     const raw = index - active;
-    return (((raw + count / 2) % count) + count) % count - count / 2;
+    return ((((raw + count / 2) % count) + count) % count) - count / 2;
   };
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-start">
-      <div className="relative aspect-[1419/2796] w-[clamp(230px,78vw,400px)]">
-        {images.map((image, index) => {
-          const offset = offsetFor(index);
-          const distance = Math.abs(offset);
-          const isCenter = distance < 0.5;
-          const scale = isCenter ? 1 : distance < 1.5 ? 0.82 : 0.7;
-          const opacity = isCenter ? 1 : distance < 1.5 ? 0.5 : 0;
+      <div
+        ref={stageRef}
+        className="flex min-h-0 w-full flex-1 items-start justify-center"
+      >
+        <div
+          className="relative aspect-[1419/2796] w-[clamp(230px,78vw,400px)]"
+          style={phoneWidth > 0 ? { width: phoneWidth } : undefined}
+        >
+          {images.map((image, index) => {
+            const offset = offsetFor(index);
+            const distance = Math.abs(offset);
+            const isCenter = distance < 0.5;
+            const scale = isCenter ? 1 : distance < 1.5 ? 0.82 : 0.7;
+            const opacity = isCenter ? 1 : distance < 1.5 ? 0.5 : 0;
 
-          return (
+            return (
+              <motion.div
+                key={image.src}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{
+                  x: `${offset * (isMobile ? 56 : 63)}%`,
+                  y: 0,
+                  scale,
+                  opacity,
+                  filter: isCenter ? "grayscale(0)" : "grayscale(1)",
+                }}
+                transition={{
+                  x: { type: "spring", stiffness: 220, damping: 30, mass: 0.9 },
+                  y: { type: "spring", stiffness: 220, damping: 30, mass: 0.9 },
+                  scale: {
+                    type: "spring",
+                    stiffness: 220,
+                    damping: 30,
+                    mass: 0.9,
+                  },
+                  opacity: { duration: 0.35, ease: "easeInOut" },
+                  filter: { duration: 0.35, ease: "easeInOut" },
+                }}
+                style={{
+                  zIndex: Math.round(100 - distance * 10),
+                  transformOrigin: isMobile ? "center center" : "bottom center",
+                }}
+                aria-hidden={isCenter ? undefined : true}
+                className={`absolute inset-0 ${
+                  isCenter ? "drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]" : ""
+                }`}
+              >
+                <PhoneMockup image={image} priority={isCenter} />
+              </motion.div>
+            );
+          })}
+
+          <div className="absolute bottom-[32%] left-1/2 z-[200] hidden -translate-x-1/2 sm:block">
             <motion.div
-              key={image.src}
-              initial={{ opacity: 0, y: 60 }}
-              animate={{
-                x: `${offset * (isMobile ? 56 : 63)}%`,
-                y: 0,
-                scale,
-                opacity,
-                filter: isCenter ? "grayscale(0)" : "grayscale(1)",
-              }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                x: { type: "spring", stiffness: 220, damping: 30, mass: 0.9 },
-                y: { type: "spring", stiffness: 220, damping: 30, mass: 0.9 },
-                scale: {
-                  type: "spring",
-                  stiffness: 220,
-                  damping: 30,
-                  mass: 0.9,
-                },
-                opacity: { duration: 0.35, ease: "easeInOut" },
-                filter: { duration: 0.35, ease: "easeInOut" },
+                duration: 0.5,
+                delay: 0.35,
+                ease: [0.22, 1, 0.36, 1],
               }}
-              style={{
-                zIndex: Math.round(100 - distance * 10),
-                transformOrigin: isMobile ? "center center" : "bottom center",
-              }}
-              aria-hidden={isCenter ? undefined : true}
-              className={`absolute inset-0 ${
-                isCenter
-                  ? "drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]"
-                  : ""
-              }`}
             >
-              <PhoneMockup image={image} priority={isCenter} />
+              <CarouselControls
+                paused={paused}
+                onToggle={() => setPaused((current) => !current)}
+                onPrevious={previous}
+                onNext={next}
+              />
             </motion.div>
-          );
-        })}
-
-        <div className="absolute bottom-[32%] left-1/2 z-[200] hidden -translate-x-1/2 sm:block">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <CarouselControls
-              paused={paused}
-              onToggle={() => setPaused((current) => !current)}
-              onPrevious={previous}
-              onNext={next}
-            />
-          </motion.div>
+          </div>
         </div>
       </div>
 

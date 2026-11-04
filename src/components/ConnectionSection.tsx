@@ -428,7 +428,7 @@ export function ConnectionSection() {
           </motion.div>
         </div>
 
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <div className="sticky top-0 h-dvh w-full overflow-hidden">
           <motion.div
             initial={false}
             animate={{ opacity: filled ? 1 : 0 }}
@@ -442,7 +442,7 @@ export function ConnectionSection() {
         <div
           id="showcase"
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-0 h-px w-px"
+          className="pointer-events-none absolute bottom-[100dvh] left-0 h-px w-px"
         />
       </div>
     </section>
