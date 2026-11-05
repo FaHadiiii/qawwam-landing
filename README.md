@@ -96,11 +96,12 @@ Set `API_TOKEN` as a Pages secret for preview and production (preview uses the
 dev API token, production the prod API token). It is a secret, not a `vars`
 entry; the prayer card reports unavailable without it.
 
-The public `/api/prayer/*` proxy is limited to 60 requests per minute per IP by
-the `PRAYER_RATE_LIMITER` binding in `wrangler.jsonc`. The limit is approximate
-per Cloudflare location. If the Pages project does not accept the Rate Limiting
-binding, add an equivalent zone WAF rate-limiting rule on `/api/prayer/*`
-instead.
+The public `/api/prayer/*` proxy applies a 60-per-minute limit when the
+`PRAYER_RATE_LIMITER` binding exists, but it cannot be declared in
+`wrangler.jsonc`: Pages configuration does not support `ratelimits`, and wrangler
+refuses to deploy with it. Protect the route with a zone WAF rate-limiting rule
+on `/api/prayer/*` instead — the Function behaves correctly with no binding, it
+simply does not throttle.
 
 Production reads invites from the prod API, because that is where the store build
 mints them; preview deployments keep using the dev API. Both API environments

@@ -10,18 +10,10 @@
     // through `/api/khatam-invite/*`.
     "API_BASE": "https://qawwam-api-prod.hadiayo39.workers.dev"
   },
-  // Protect the public prayer proxy from being used to exhaust the upstream
-  // API bearer token. Limits are approximate per Cloudflare location.
-  "ratelimits": [
-    {
-      "name": "PRAYER_RATE_LIMITER",
-      "namespace_id": "2001",
-      "simple": {
-        "limit": 60,
-        "period": 60
-      }
-    }
-  ],
+  // The prayer proxy protects itself with PRAYER_RATE_LIMITER when that binding
+  // exists. It cannot be declared here: Pages configuration does not support
+  // `ratelimits`, and wrangler refuses to deploy with it. Throttle
+  // /api/prayer/* with a Cloudflare WAF rate-limiting rule instead.
   "env": {
     "preview": {
       "vars": {
