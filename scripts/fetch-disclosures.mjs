@@ -59,7 +59,10 @@ function token() {
 }
 
 async function document(slug, auth) {
-  const response = await fetch(`${BASE}/v1/disclosures/${slug}`, {
+  // The endpoint is edge-cached for a day, so a document changed by a deploy
+  // would otherwise be read from the cache until the TTL passes. A unique query
+  // makes this read go to the origin, which is what a sync is for.
+  const response = await fetch(`${BASE}/v1/disclosures/${slug}?v=${Date.now()}`, {
     headers: { Authorization: `Bearer ${auth}` },
   })
 

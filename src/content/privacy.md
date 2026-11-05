@@ -1,4 +1,4 @@
-**Effective date:** 2026-08-14 · **Version:** 1.0.0
+**Effective date:** 2026-11-04 · **Version:** 1.1.0
 
 This Privacy Policy explains how Qawwam ("we", "us") collects, uses, and
 protects your information when you use the App.
@@ -11,6 +11,10 @@ protects your information when you use the App.
 - **Activity data:** Bookmarked surahs and ayahs, notes, reading progress,
   prayer records, fasting records, and similar data you create in the App. This
   data is synced to your account so it is available across your devices.
+- **Donation records:** If you make a donation, we store the product, the Google
+  Play order identifier, the purchase time, the amount tier, and a one-way hash
+  of the purchase token. We use these to verify the donation with Google and to
+  recognise supporters. We do **not** receive or store your payment method.
 
 ### 1.2 Information collected automatically
 - **Usage data:** Aggregated, non-identifying information about how the App is
@@ -27,6 +31,7 @@ We use your information to:
 
 - Provide, maintain, and personalize the Service.
 - Sync your content across devices via your account.
+- Verify donations and recognise supporters.
 - Respond to your requests and provide support.
 - Improve the App's features and reliability.
 
@@ -44,7 +49,8 @@ applies to your use of Google Sign-In.
 Your account data is stored on Cloudflare infrastructure. We retain your data
 for as long as your account is active or as needed to provide the Service. You
 may request deletion of your account and associated data at any time by
-contacting us.
+contacting us. Donation records are kept as a record of the transaction, and a
+supporter status is removed when your account is deleted.
 
 ## 5. Data Sharing
 
@@ -53,6 +59,8 @@ We do not share your personal information with third parties except:
 - When required by law or to protect rights and safety.
 - With service providers (such as Cloudflare) who process data on our behalf
   under confidentiality obligations.
+- With Google, which processes in-app payments. Google receives the payment
+  details; we receive only confirmation of the purchase.
 
 ## 6. Your Rights and Choices
 
